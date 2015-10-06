@@ -98,11 +98,9 @@ $enable_javascript = 'http://www.enable-javascript.com';
 						<?php if(isset($maskitto_light['header-contacts']) && $maskitto_light['header-contacts']){ ?>
 
 							<?php if( isset($maskitto_light['header-contacts-mail']) && $maskitto_light['header-contacts-mail'] ){ ?>
-								<a href="mailto:<?php echo esc_attr($maskitto_light['header-contacts-mail']); ?>"><i class="fa fa-envelope"></i><?php echo esc_attr($maskitto_light['header-contacts-mail']); ?></a>
-							<?php } ?>
-
-							<?php if( isset($maskitto_light['header-contacts-phone']) && $maskitto_light['header-contacts-phone'] ){ ?>
-								<span><i class="fa fa-phone"></i><?php echo esc_attr($maskitto_light['header-contacts-phone']); ?></span>
+                                        <a href="/blogue"> Blogue</a>
+                                        <a href="/faq"> FAQ</a>
+                                        <a href="/contacto"> Contacto</a>
 							<?php } ?>
 
 						<?php } ?>
