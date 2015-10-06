@@ -13,6 +13,7 @@ $enable_javascript = 'http://www.enable-javascript.com';
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="4jrzMvQ9ubi2EKe3nmRid4rEVJ7CB4hxkAH3GViJ8K4" />
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<?php if( isset($maskitto_light['favicon-image']['thumbnail']) && $maskitto_light['favicon-image']['thumbnail'] ) : ?>
 		<link rel="shortcut icon" href="<?php echo esc_url($maskitto_light['favicon-image']['thumbnail']); ?>" />
