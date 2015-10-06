@@ -24,18 +24,18 @@ global $maskitto_light;
 
 			<?php /*
 			*
-			*  Plase support this theme developers efforts to remove or change copyrights!
+			*  Plaese support theme developers efforts by donation to remove or change copyrights!
 			*
-			*/ $author_website = 'http://shufflehound.com'; ?>
+			*/ $author_website = 'http://shufflehound.com/maskitto-light/'; ?>
 				<div class="copyrights">
 					<span class="thank-you-for-your-support">
-						&#169; <?php echo date("Y"); ?> <?php _e( 'Theme by', 'maskitto-light' ); ?> <a href="<?php echo esc_url($author_website); ?>"><?php _e( 'Shufflehound', 'maskitto-light' ); ?></a>. <?php _e( 'All rights reserved', 'maskitto-light' ); ?>. 
+						<a href="<?php echo $author_website; ?>">Maskitto Light</a> <?php _e( 'WordPress Theme by Shufflehound.', 'maskitto-light' ); ?></span>
 					</span>
-					<?php echo esc_attr($maskitto_light['footer-text']); ?>
+					<?php echo preg_replace("#<br\s?/?>#", "", html_entity_decode( esc_attr( $maskitto_light['footer-text'] ))); ?>
 				</div>
 			<?php /*
 			*
-			*  Plase support this theme developers efforts to remove or change copyrights!
+			*  Plaese support theme developers efforts by donation to remove or change copyrights!
 			*
 			*/ ?>
 

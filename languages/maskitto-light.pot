@@ -3,30 +3,20 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Text in echo
-#: maskitto-light/comments.php:107
-msgid ""
-msgstr ""
-
 #. Text in function
 #: maskitto-light/inc/template-tags.php:64
 msgid "% Comments"
 msgstr ""
 
-#. Text in function
-#: maskitto-light/comments.php:94
-msgid "%1$s at %2$s"
-msgstr ""
-
 #. Text in echo
-#: maskitto-light/index.php:55
-#: maskitto-light/archive.php:58
+#: maskitto-light/archive.php:42
 #: maskitto-light/single.php:43
+#: maskitto-light/index.php:39
 msgid "(more)"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/header.php:152
+#: maskitto-light/header.php:199
 msgid "(see how)"
 msgstr ""
 
@@ -35,38 +25,49 @@ msgstr ""
 msgid ", "
 msgstr ""
 
+#. Text in echo
+#: maskitto-light/inc/initialize.php:1
+msgid "-"
+msgstr ""
+
 #. Text in function
 #: maskitto-light/inc/template-tags.php:64
 msgid "1 Comment"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-portfolio.php:161
+#: maskitto-light/inc/widgets/sh-portfolio.php:206
 msgid "12 items"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-services.php:171
+#: maskitto-light/inc/widgets/sh-services.php:216
+#: maskitto-light/inc/widgets/sh-testimonials.php:241
+#: maskitto-light/inc/widgets/sh-blog.php:114
 msgid "3 items"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-portfolio.php:159
+#: maskitto-light/inc/widgets/sh-portfolio.php:204
 msgid "4 items"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-services.php:172
+#: maskitto-light/inc/widgets/sh-services.php:217
+#: maskitto-light/inc/widgets/sh-testimonials.php:242
+#: maskitto-light/inc/widgets/sh-blog.php:115
 msgid "6 items"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-portfolio.php:160
+#: maskitto-light/inc/widgets/sh-portfolio.php:205
 msgid "8 items"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-services.php:173
+#: maskitto-light/inc/widgets/sh-services.php:218
+#: maskitto-light/inc/widgets/sh-testimonials.php:243
+#: maskitto-light/inc/widgets/sh-blog.php:116
 msgid "9 items"
 msgstr ""
 
@@ -76,14 +77,50 @@ msgid "<p class=\"description\">This is a section created by adding a filter to 
 msgstr ""
 
 #. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "<p>This is the tab content, HTML is allowed.</p>"
+msgstr ""
+
+#. Text in function
 #: maskitto-light/inc/template-tags.php:27
 msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
 msgstr ""
 
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Accent Color"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Accent Hover Color"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Add additional information in footer"
+msgstr ""
+
 #. Text in echo
-#: maskitto-light/index.php:32
+#: maskitto-light/inc/widgets/sh-portfolio.php:229
+msgid "Add white spaces between images"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Admin Login Page Logo"
+msgstr ""
+
+#. Text in echo
 #: maskitto-light/archive.php:31
+#: maskitto-light/inc/widgets/sh-portfolio.php:72
 #: maskitto-light/single.php:16
+#: maskitto-light/index.php:32
 msgid "All"
 msgstr ""
 
@@ -92,9 +129,24 @@ msgstr ""
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr ""
 
-#. Text in echo
-#: maskitto-light/footer.php:32
-msgid "All rights reserved"
+#. Text in function
+#: maskitto-light/inc/initialize.php:1
+msgid "Author"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/initialize.php:1
+msgid "Author description"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/initialize.php:1
+msgid "Author name"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Back To Top"
 msgstr ""
 
 #. Text in echo
@@ -103,8 +155,140 @@ msgid "Back to home page"
 msgstr ""
 
 #. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Behance"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Blog"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Blog Background"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Blog Slide"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Blog Slide Height"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Blog Slide Image"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Blog Slide Name"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Blog Style"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Body Background Color"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Body Font"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Button Style"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/content-single.php:30
+#: maskitto-light/content-single.php:127
+#: maskitto-light/content.php:106
+msgid "By"
+msgstr ""
+
+#. Text in function
 #: maskitto-light/inc/plugins/redux.php:206
 msgid "By %s"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "CSS Code"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-portfolio.php:216
+msgid "Categories switch"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Change background color"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Change blog background image and color"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Change footer background color"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Change header background color"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Change web site font"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Choose blog style (includes blog and post page)"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Choose global button style"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Choose global slideshow widget style"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Choose global title style"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Choose header layout type"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Choose navigation dropdown action"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Choose page layout type"
 msgstr ""
 
 #. Text in echo
@@ -112,28 +296,67 @@ msgstr ""
 msgid "Choose page you want to include"
 msgstr ""
 
-#. Text in echo
-#: maskitto-light/comments.php:137
-msgid "Comments are closed."
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Choose slide height"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-counter.php:104
+#: maskitto-light/comments.php:143
+msgid "Comments are closed."
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Contact  Information"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Contact Email"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Contact Phone"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Contact Social Icons"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Contacts"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-slider.php:203
+#: maskitto-light/inc/widgets/sh-services.php:162
+#: maskitto-light/inc/widgets/sh-portfolio.php:160
+#: maskitto-light/inc/widgets/sh-testimonials.php:197
+#: maskitto-light/inc/widgets/sh-partners.php:96
+msgid "Content"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-counter.php:106
 msgid "Counter 1"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-counter.php:118
+#: maskitto-light/inc/widgets/sh-counter.php:120
 msgid "Counter 2"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-counter.php:132
+#: maskitto-light/inc/widgets/sh-counter.php:134
 msgid "Counter 3"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-counter.php:146
+#: maskitto-light/inc/widgets/sh-counter.php:148
 msgid "Counter 4"
 msgstr ""
 
@@ -149,6 +372,26 @@ msgid "Customize &#8220;%s&#8221;"
 msgstr ""
 
 #. Text in function
+#: maskitto-light/inc/initialize.php:1
+msgid "Date"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Define main accent color"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Define main accent hover color for links"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-slogan.php:59
+msgid "Description"
+msgstr ""
+
+#. Text in function
 #: maskitto-light/inc/plugins/tgm.php:1
 msgid "Dismiss this notice"
 msgstr ""
@@ -159,11 +402,12 @@ msgid "Displays latest blog posts. Only for page builder."
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-services.php:157
+#: maskitto-light/inc/widgets/sh-services.php:202
 msgid "Dotted line"
 msgstr ""
 
 #. Text in function
+#: maskitto-light/comments.php:110
 #: maskitto-light/inc/template-tags.php:64
 msgid "Edit"
 msgstr ""
@@ -173,24 +417,134 @@ msgstr ""
 msgid "Email "
 msgstr ""
 
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable \"back to top\" button"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable \"name of blog section\" block"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable accent background color for social bar"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable blog categories on top of blog pages"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable blog page widgets in the right side"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable compresed file version use"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable contact information in header"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable contact social icons in header"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable footer logo"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable header search form"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable option to open social icon links in new tab"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable option to show social icons"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable option to to show loading screen"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enable or disable sticky header"
+msgstr ""
+
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-counter.php:153
+#: maskitto-light/inc/widgets/sh-counter.php:155
 msgid "Enter counter name"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-counter.php:150
+#: maskitto-light/inc/widgets/sh-counter.php:152
 msgid "Enter counter number"
 msgstr ""
 
-#. Text in echo
-#: maskitto-light/inc/widgets/sh-slider.php:145
-msgid "Enter slideshow height"
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Enter name"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-counter.php:164
+#: maskitto-light/inc/widgets/sh-slider.php:196
+msgid "Enter slide height for desktop devices (default height is 500px, min height is 400)"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-counter.php:166
 msgid "Enter top padding in pixels (minium is 1 px)"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Facebook"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Favicon"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Flickr"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Footer Background color"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Footer Logo"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Footer Text"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Foursquare"
 msgstr ""
 
 #. Text in echo
@@ -198,9 +552,63 @@ msgstr ""
 msgid "Gallery"
 msgstr ""
 
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "General"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Google+"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Header"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Header Background color (bottom bar)"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Header Layout"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Header Search"
+msgstr ""
+
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-partners.php:118
-#: maskitto-light/inc/widgets/sh-portfolio.php:174
+#: maskitto-light/inc/widgets/sh-slider.php:192
+msgid "Height"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-portfolio.php:239
+msgid "Hide all item details"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/initialize.php:1
+msgid "Image"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Import / Export"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Import and Export your Redux Framework settings from file, text or URL."
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-partners.php:139
 msgid "In next theme versions"
 msgstr ""
 
@@ -210,14 +618,13 @@ msgid "Include other page. Only for page builder."
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/template-tags.php:615
-msgid "Information"
+#: maskitto-light/inc/widgets/sh-counter.php:162
+msgid "Inner top padding"
 msgstr ""
 
-#. Text in echo
-#: maskitto-light/inc/widgets/sh-counter.php:160
-#: maskitto-light/inc/widgets/sh-slider.php:141
-msgid "Inner top padding"
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Instagram"
 msgstr ""
 
 #. Text in function
@@ -241,7 +648,7 @@ msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searc
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/header.php:152
+#: maskitto-light/header.php:198
 msgid "Javascript is disabled in your web browser. Please enable it"
 msgstr ""
 
@@ -251,14 +658,66 @@ msgid "Leave a comment"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-services.php:167
-#: maskitto-light/inc/widgets/sh-portfolio.php:155
+#: maskitto-light/inc/widgets/sh-services.php:212
+#: maskitto-light/inc/widgets/sh-portfolio.php:200
+#: maskitto-light/inc/widgets/sh-testimonials.php:237
+#: maskitto-light/inc/widgets/sh-blog.php:109
 msgid "Limit items"
 msgstr ""
 
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Limit preview words length in blog page or others"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "LinkedIn"
+msgstr ""
+
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-blog.php:47
+#: maskitto-light/inc/widgets/sh-blog.php:55
 msgid "Load more"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Loading screen with animation"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Logo"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-partners.php:102
+msgid "Manage partners content"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-portfolio.php:166
+msgid "Manage portfolio content"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-services.php:168
+msgid "Manage services content"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-slider.php:209
+msgid "Manage slider content"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-testimonials.php:203
+msgid "Manage testimonials content"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Maskitto Light Options"
 msgstr ""
 
 #. Text in function
@@ -297,8 +756,28 @@ msgid "Maskitto: Slider"
 msgstr ""
 
 #. Text in function
+#: maskitto-light/inc/widgets/sh-slogan.php:1
+msgid "Maskitto: Slogan"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/widgets/sh-testimonials.php:1
+msgid "Maskitto: Testimonials"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Minify"
+msgstr ""
+
+#. Text in function
 #: maskitto-light/comments.php:24
 msgid "Name "
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Navigation Dropdown"
 msgstr ""
 
 #. Text in function
@@ -306,14 +785,19 @@ msgstr ""
 msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 
+#. Text in function
+#: maskitto-light/inc/template-tags.php:880
+msgid "Next post"
+msgstr ""
+
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-portfolio.php:162
+#: maskitto-light/inc/widgets/sh-portfolio.php:207
 msgid "No limits"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/header.php:126
-#: maskitto-light/header.php:128
+#: maskitto-light/header.php:171
+#: maskitto-light/header.php:173
 msgid "No menu is assigned"
 msgstr ""
 
@@ -328,12 +812,29 @@ msgid "Nothing Found"
 msgstr ""
 
 #. Text in function
-#: maskitto-light/inc/widgets/sh-partners.php:1
+#: maskitto-light/inc/widgets/sh-slider.php:1
 #: maskitto-light/inc/widgets/sh-counter.php:1
 #: maskitto-light/inc/widgets/sh-services.php:1
-#: maskitto-light/inc/widgets/sh-slider.php:1
 #: maskitto-light/inc/widgets/sh-portfolio.php:1
+#: maskitto-light/inc/widgets/sh-testimonials.php:1
+#: maskitto-light/inc/widgets/sh-partners.php:1
+#: maskitto-light/inc/widgets/sh-slogan.php:1
 msgid "Only for page builder."
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Open Social Links In New Tab"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Other"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Page Layout"
 msgstr ""
 
 #. Text in echo
@@ -341,9 +842,28 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Pinterest"
+msgstr ""
+
 #. Text in echo
 #: maskitto-light/sidebar.php:18
 msgid "Please assign your widgets here"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Please enter a valid URL in this field."
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-slider.php:212
+#: maskitto-light/inc/widgets/sh-services.php:171
+#: maskitto-light/inc/widgets/sh-portfolio.php:169
+#: maskitto-light/inc/widgets/sh-testimonials.php:206
+#: maskitto-light/inc/widgets/sh-partners.php:105
+msgid "Please import <i>Types</i> plugin XML file from our documentation to access this option."
 msgstr ""
 
 #. Text in function
@@ -361,15 +881,43 @@ msgstr ""
 msgid "Posts navigation"
 msgstr ""
 
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Preview word limit"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/template-tags.php:880
+msgid "Previous post"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/initialize.php:1
+msgid "Quote"
+msgstr ""
+
 #. Text in echo
+#: maskitto-light/inc/widgets/sh-services.php:102
+#: maskitto-light/inc/template-tags.php:780
 #: maskitto-light/content.php:117
-#: maskitto-light/inc/template-tags.php:641
+#: maskitto-light/inc/widgets/sh-testimonials.php:142
+#: maskitto-light/inc/initialize.php:1
 msgid "Read more"
 msgstr ""
 
 #. Text in function
 #: maskitto-light/content-none.php:15
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/initialize.php:1
+msgid "Redux Framework"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-portfolio.php:236
+msgid "Remove Item Details"
 msgstr ""
 
 #. Text in function
@@ -387,8 +935,8 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#. Text in echo
-#: maskitto-light/header.php:71
+#. Text in function
+#: maskitto-light/inc/initialize.php:1
 msgid "Search here.."
 msgstr ""
 
@@ -398,22 +946,73 @@ msgid "Section via hook"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-services.php:195
-msgid "Select widget group"
+#: maskitto-light/inc/widgets/sh-blog.php:113
+msgid "Select limit"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-services.php:187
+#: maskitto-light/inc/widgets/sh-slider.php:234
+#: maskitto-light/inc/widgets/sh-services.php:240
+#: maskitto-light/inc/widgets/sh-portfolio.php:259
+#: maskitto-light/inc/widgets/sh-testimonials.php:265
+msgid "Select widget group"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Show Categories"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Show Widgets"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-slider.php:226
+#: maskitto-light/inc/widgets/sh-services.php:232
+#: maskitto-light/inc/widgets/sh-portfolio.php:251
+#: maskitto-light/inc/widgets/sh-testimonials.php:257
 msgid "Show all"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/footer.php:32
-msgid "Shufflehound"
+#: maskitto-light/inc/widgets/sh-portfolio.php:219
+msgid "Show categories switch"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Skype"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/initialize.php:1
+msgid "Slide name"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Slideshow Widget Style"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Social"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Social Icons"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Social bar accent background"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/header.php:135
+#: maskitto-light/header.php:181
 msgid "Social links"
 msgstr ""
 
@@ -427,11 +1026,22 @@ msgstr ""
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Sticky Header"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Styling"
+msgstr ""
+
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-partners.php:104
-#: maskitto-light/inc/widgets/sh-services.php:146
-#: maskitto-light/inc/widgets/sh-blog.php:85
-#: maskitto-light/inc/widgets/sh-portfolio.php:144
+#: maskitto-light/inc/widgets/sh-services.php:191
+#: maskitto-light/inc/widgets/sh-portfolio.php:189
+#: maskitto-light/inc/widgets/sh-testimonials.php:226
+#: maskitto-light/inc/widgets/sh-blog.php:98
+#: maskitto-light/inc/widgets/sh-partners.php:125
 msgid "Subitle"
 msgstr ""
 
@@ -456,9 +1066,19 @@ msgstr ""
 msgid "The page you are looking for does not exist"
 msgstr ""
 
-#. Text in echo
-#: maskitto-light/footer.php:32
-msgid "Theme by"
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Theme Information 1"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Theme Information 2"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/initialize.php:1
+msgid "Theme Widgets"
 msgstr ""
 
 #. Text in function
@@ -467,19 +1087,62 @@ msgid "This <a href=\"%1$s\">child theme</a> requires its parent theme, %2$s."
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-partners.php:108
-#: maskitto-light/inc/widgets/sh-services.php:175
-#: maskitto-light/inc/widgets/sh-blog.php:89
-#: maskitto-light/inc/widgets/sh-portfolio.php:164
+#: maskitto-light/inc/widgets/sh-services.php:220
+#: maskitto-light/inc/widgets/sh-portfolio.php:209
+#: maskitto-light/inc/widgets/sh-testimonials.php:245
+#: maskitto-light/inc/widgets/sh-blog.php:118
+#: maskitto-light/inc/widgets/sh-partners.php:129
 msgid "This field is optional"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-partners.php:93
-#: maskitto-light/inc/widgets/sh-services.php:135
-#: maskitto-light/inc/widgets/sh-blog.php:74
-#: maskitto-light/inc/widgets/sh-portfolio.php:132
+#: maskitto-light/inc/widgets/sh-services.php:180
+#: maskitto-light/inc/widgets/sh-portfolio.php:178
+#: maskitto-light/inc/widgets/sh-testimonials.php:215
+#: maskitto-light/inc/widgets/sh-blog.php:87
+#: maskitto-light/inc/widgets/sh-partners.php:114
+#: maskitto-light/inc/widgets/sh-slogan.php:49
 msgid "Title"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Title Style"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Tumblr"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Twitter"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Upload image"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Upload logo"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Upload your web site favicon, recomended size 32x32px"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Upload your web site logo"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "VK"
 msgstr ""
 
 #. Text in function
@@ -493,10 +1156,107 @@ msgid "Website "
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-partners.php:115
-#: maskitto-light/inc/widgets/sh-services.php:182
-#: maskitto-light/inc/widgets/sh-portfolio.php:171
+#: maskitto-light/inc/widgets/sh-portfolio.php:226
+msgid "White spaces"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/inc/widgets/sh-slider.php:221
+#: maskitto-light/inc/widgets/sh-services.php:227
+#: maskitto-light/inc/widgets/sh-portfolio.php:246
+#: maskitto-light/inc/widgets/sh-testimonials.php:252
+#: maskitto-light/inc/widgets/sh-partners.php:136
 msgid "Widget group"
+msgstr ""
+
+#. Text in echo
+#: maskitto-light/footer.php:32
+msgid "WordPress Theme by Shufflehound."
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Wordpress"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/comments.php:24
+msgid "Write your comment here ..."
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "You can change CSS code for existing elements here"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Behance profile URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Facebook page/profile URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Flickr URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Foursquare URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Google+ URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Instagram URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your LinkedIn profile URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Pinterest profile URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Skype profile URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Tumblr profile URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Twitter URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your VK profile URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Wordpress profile URL"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your Youtube URL"
 msgstr ""
 
 #. Text in echo
@@ -504,8 +1264,28 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your website email adress"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Your website phone number"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/inc/plugins/redux.php:220
+msgid "Youtube"
+msgstr ""
+
+#. Text in function
+#: maskitto-light/comments.php:95
+msgid "at"
+msgstr ""
+
 #. Text in echo
-#: maskitto-light/inc/widgets/sh-services.php:160
+#: maskitto-light/inc/widgets/sh-services.php:205
 msgid "disable the top dotted lines"
 msgstr ""
 
@@ -520,6 +1300,6 @@ msgid "http://codex.wordpress.org/Child_Themes"
 msgstr ""
 
 #. Text in echo
-#: maskitto-light/header.php:126
+#: maskitto-light/header.php:171
 msgid "please assign it here"
 msgstr ""

@@ -36,6 +36,10 @@ Script - jQuery Counterup
 Released under the GPL v2 License.
 
 
+Script - Maplace
+Licensed under the MIT license.
+
+
 Script - Slick
 Licensed under the MIT license.
 

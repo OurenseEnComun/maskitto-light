@@ -42,6 +42,7 @@ class Maskitto_Counter extends WP_Widget {
 
     ?>
 
+    <?php echo $args['before_widget']; ?>
         <?php if( $counter1_number > 0 || $counter2_number > 0 || $counter3_number > 0 || $counter4_number > 0 ) : ?>
             <div class="page-section" style="<?php echo $style; ?>">
                 <div class="container countup-list">
@@ -75,6 +76,7 @@ class Maskitto_Counter extends WP_Widget {
                 </div>
             </div>
         <?php endif; ?>
+    <?php echo $args['after_widget']; ?>
 
 
     <?php }

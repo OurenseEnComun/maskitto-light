@@ -1,3 +1,127 @@
+2.1.8
+* Added support for 3th header navigation level
+
+2.1.7
+* Added support for current post parrent highlight in header navigation
+* Fixed compatiblity issues with bbpress plugin
+
+2.1.6
+* Fixed testimonial widget issue
+
+2.1.5
+* Fixed search page issue with blog widget option
+
+2.1.4
+* Updated Font Awesome icons to the 4.4.0 version
+
+2.1.3
+* Fixed comments date not showing up issue
+* Fixed comments edit button issue
+* Changed "Maskitto Light Option > Footer text" editor to textarea, due to some user issues
+
+2.1.2
+* Fixed some other Jetpack compatibility issues
+
+2.1.1
+* Added some new translations
+* Fixed few language string issues
+* Fixed some Jetpack compatibility issues
+* Improved no-JS message 
+
+2.1.0
+* Added Behance social icon option in the theme options
+* Added Tumblr social icon option in the theme options
+* Fixed services widget title and subtitle issues
+* Fixed translation related issues
+
+2.0.9
+* Added link brakes to portfolio caption
+* Added option to limit preview text
+* Fixed issue blog widget title is blank, but have separator line
+* Fixed testimonials widget group issue
+* Fixed portfolio widget group issue
+* Improved navigation compatibility with HTML tags
+* Improved navigation dropdown compatibility
+
+2.0.8
+* Added option to show loading animations
+* Improved partners widget responsivness
+* Fixed NextGen Gallery plugin lightbox issue
+* Fixed fatal error for some users in template-tags.php
+
+2.0.7
+* Added swipe support for light box picture in portfolio widget
+* Updated Jquery tosrus plugin
+* Updated comments section
+* Fixed issue - comments not showing up in some pages
+
+2.0.6
+* Added option to disable blog page widgets under theme options
+* Added option to remove portfolio widget item details
+* Fixed some service widget issues
+* Fixed some portfolio widget category issues
+* Fixed some blog pages category issues
+
+2.0.4, 2.0.5
+* Security update
+* Other small improvements
+
+2.0.3
+* Added option to change blog widget item limit
+* Fixed blog widget "Read more" button link not working
+* Improved testimonials widget
+* Other improvements
+
+2.0.2
+* Fixed navigation dropdown color issue
+* Fixed some testimonials widget issues
+* Improved partners widget actions
+
+2.0.1
+* Added few visual tweaks
+* Fixed Include page widget title issue
+* Fixed Include page widget double Read More buttons isseue
+* Fixed Include page widget dobule content issue
+* Fixed some testimonials widget issues
+* Improved responsive design
+* Other improvements
+
+2.0.0
+* Added testimonials widget
+* Added slogan widget
+* Added button style option under theme options
+* Added title style option under theme options
+* Added slideshow widget style option under theme options
+* Added parallax effect support under page settings
+* Added second caption for slideshow widget
+* Added site name for header logo IMG attributes
+* Added option to set link hover color under theme options
+* Added option to set slideshow height under slideshow widget options
+* Added option to add categories switch option for portfolio widget under its options
+* Added option to add blank spaces between images under portfolio widget options
+* Improved Contact Form 7 compatibility
+* Improved Page Builder by SiteOrigin compatibility
+* Updated theme author copyright text in the footer
+* Updated readme.txt
+* Fixed multiple category issue under portfolio widget
+* Fixed some header item placement issues
+* Fixed boxed layout issue
+* Removed blank spaces form footer copyrights
+* Other improvements
+** Notice: "Types" plugin XML file update needed
+
+1.3.4
+* Added option to add accent background color to social header under theme options
+* Added "Read More" link under service items when custom link is added
+* Added option to use html code inside footer copyrights
+* Fixed social icons is now hidden in mobile devices when disabled
+* Fixed plugin Contact Form 7 responsive issue
+* Fixed boxed layout background color issue
+
+1.3.3
+* Fixed search widget design issue
+* Other small improvements
+
 1.3.2
 * Minor changes
 

@@ -24,7 +24,7 @@ if ( post_password_required() ) {
 	<?php comment_form(array(
 		'comment_notes_after' => '',
 		'comment_notes_before' => '',
-		'comment_field' =>  '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . _e( 'Write your comment here ...', 'maskitto-light' ) . '"></textarea></p>',
+		'comment_field' =>  '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . __( 'Write your comment here ...', 'maskitto-light' ) . '"></textarea></p>',
 		'fields' => apply_filters( 'comment_form_default_fields', array(
 			'author' =>
 				'<p class="comment-form-author">
@@ -90,10 +90,12 @@ if ( post_password_required() ) {
 										<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'maskitto-light' ); ?></em>
 									<?php endif; ?>
 
-									<span class="comment-date comment-meta commentmetadata grey"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
-										<?php
-											/* translators: 1: date, 2: time */
-											printf( __('%1$s at %2$s', 'maskitto-light'), get_comment_date(),  get_comment_time() ); ?></a>
+									<span class="comment-date comment-meta commentmetadata grey">
+										<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+											<?php
+												echo get_comment_date().' '.__('at', 'maskitto-light').' '.get_comment_time();
+											?>
+										</a>
 									</span>
 								</div>
 							</div>
@@ -104,7 +106,11 @@ if ( post_password_required() ) {
 
 							<div class="reply">
 							<?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-							<span class="grey"><?php edit_comment_link( _e( '', 'maskitto-light' ), '  ', '' ); ?></span>
+							<span class="grey">
+								<?php
+									edit_comment_link( __( 'Edit', 'maskitto-light' ), '  ', '' );
+								?>
+							</span>
 							</div>
 						</div>
 					</div>

@@ -1,5 +1,5 @@
 /*
- *	jQuery Touch Optimized Sliders "R"Us 2.3.1
+ *	jQuery Touch Optimized Sliders "R"Us 2.4.0
  *	
  *	Copyright (c) Fred Heusschen
  *	www.frebsite.nl
@@ -17,7 +17,7 @@
 
 	var _PLUGIN_	= 'tosrus',
 		_ABBR_		= 'tos',
-		_VERSION_	= '2.3.1';
+		_VERSION_	= '2.4.0';
 
 
 	//	Plugin already excists
@@ -101,6 +101,7 @@
 					function( e )
 					{
 						e.stopPropagation();
+
 						switch ( that.opts.wrapper.onClick )
 						{
 							case 'toggleUI':
@@ -108,7 +109,10 @@
 								break;
 							
 							case 'close':
-								that.close();
+								if ( !$(e.target).is( 'img' ) )
+								{
+									that.close();
+								}
 								break;
 						}
 					}
@@ -160,6 +164,21 @@
 				{
 					this.nodes.$wrpr.addClass( _c( 'has-' + $[ _PLUGIN_ ].ui[ u ] ) );
 				}
+			}
+
+
+			//	Prevent closing when clicking on UI elements
+			if ( this.opts.wrapper.onClick == 'close' )
+			{
+				this.nodes.$uibg
+					.add( this.nodes.$capt || $() )
+					.add( this.nodes.$pagr || $() )
+					.on( _e.click,
+						function( e )
+						{
+							e.stopPropagation();
+						}
+					);
 			}
 
 

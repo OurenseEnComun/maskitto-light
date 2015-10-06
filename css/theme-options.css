@@ -69,3 +69,14 @@
     border-radius: 3px;
     text-decoration: none;
 }
+
+
+/* Redux bug fix */
+
+#redux-header .rAds,
+#redux-header .redux-dev-mode-notice {
+    display: none!important;
+    opacity: 0!important;
+    width: 0!important;
+    height: 0!important;
+}

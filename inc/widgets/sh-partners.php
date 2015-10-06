@@ -33,8 +33,9 @@ class Maskitto_Partners extends WP_Widget {
         $partners = wp_count_posts( 'partners' );
         if( isset( $partners->publish ) && $partners->publish > 0){
     ?>
-        <div class="page-section">
-            <div class="container">
+    <?php echo $args['before_widget']; ?>
+        <div class="page-section page-section-partners">
+            <div class="container<?php echo ( !$subtitle ) ? ' page-no-subtitle' : ''; ?>">
 
                 <?php if( $title || $subtitle ) : ?>
                 <div class="section-title text-center">
@@ -44,7 +45,9 @@ class Maskitto_Partners extends WP_Widget {
                     <?php if( $subtitle ) : ?>
                         <div class="subtitle"><p><?php echo $subtitle; ?></p></div>
                     <?php endif; ?>
-                    <div class="section-title-line"></div>
+                    <?php if( $instance['title'] || $instance['subtitle'] ){ ?>
+                        <div class="section-title-line"></div>
+                    <?php } ?>
                 </div>
                 <?php endif; ?>
                 
@@ -68,7 +71,7 @@ class Maskitto_Partners extends WP_Widget {
                 </div>
             </div>
         </div>
-
+    <?php echo $args['after_widget']; ?>
     <?php } }
 
 
@@ -88,7 +91,7 @@ class Maskitto_Partners extends WP_Widget {
         
         ?>
 
-        <div class="widget-option no-border">
+        <div class="widget-option">
             <div class="widget-th">
                 <label for=""><b><?php _e( 'Content', 'maskitto-light' ); ?></b></label> 
             </div>
@@ -96,7 +99,7 @@ class Maskitto_Partners extends WP_Widget {
 
                 <?php if ( post_type_exists( 'partners' ) ) : ?>
                     <a href="<?php echo admin_url( 'edit.php?post_type=partners' ); ?>" target="_blank" class="widget-edit-button">
-                        <?php _e( 'Manage partners content', 'maskitto-light' ); ?>
+                        <?php _e( 'Manage partners content', 'maskitto-light' ); ?> 
                     </a>
                 <?php else : ?>
                     <p><?php _e( 'Please import <i>Types</i> plugin XML file from our documentation to access this option.', 'maskitto-light' ); ?></p>
@@ -128,7 +131,7 @@ class Maskitto_Partners extends WP_Widget {
             <div class="clearfix"></div>
         </div>
 
-        <div class="widget-option">
+        <div class="widget-option no-border">
             <div class="widget-th">
                 <label for="<?php echo $this->get_field_id( 'widget_group' ); ?>"><b><?php _e( 'Widget group', 'maskitto-light' ); ?></b></label> 
             </div>

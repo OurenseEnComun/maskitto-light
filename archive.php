@@ -30,30 +30,14 @@ get_header();
 		<div class="container">
 			<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="category-item<?php if( !get_query_var('cat') ) { echo ' active-category'; } ?>"><?php _e( 'All', 'maskitto-light' ); ?></a>
 			<?php
-
-			$args = array(
-				'type'                     => 'post',
-				'child_of'                 => 0,
-				'parent'                   => '',
-				'orderby'                  => 'count',
-				'order'                    => 'desc',
-				'hide_empty'               => 1,
-				'hierarchical'             => 1,
-				'exclude'                  => '',
-				'include'                  => '',
-				'number'                   => '',
-				'taxonomy'                 => 'category',
-				'pad_counts'               => false 
-			);
-
-			$categories = get_categories( $args );
-			foreach ($categories as $category) { ?>
-				<?php if( $category->cat_ID == get_query_var('cat') ) { ?>
-					<a href="<?php echo get_category_link( $category->term_id ); ?>" class="category-item active-category"><?php echo $category->cat_name; ?></a>
+			$categories = maskitt_light_get_terms_per_post_type( 'category', array( 'post_type' => 'post' ) );
+			foreach ($categories as $category) : ?>
+				<?php if( $category->term_id == get_query_var('cat') ) { ?>
+					<a href="<?php echo get_category_link( $category->term_id ); ?>" class="category-item active-category"><?php echo $category->name; ?></a>
 				<?php } else { ?>
-					<a href="<?php echo get_category_link( $category->term_id ); ?>" class="category-item"><?php echo $category->cat_name; ?></a>
+					<a href="<?php echo get_category_link( $category->term_id ); ?>" class="category-item"><?php echo $category->name; ?></a>
 				<?php } ?>
-			<?php } ?>
+			<?php endforeach; ?>
 			<?php if( count( $categories ) > 6 ) { ?>
 				<a href="#" class="category-item category-show-all"><?php _e( '(more)', 'maskitto-light' ); ?></a>
 			<?php } ?>
@@ -65,10 +49,20 @@ get_header();
 <div class="page-section page-blog">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 blog-column-left">
+			<div class="col-md-<?php echo ( !isset( $maskitto_light['blog-widgets'] ) || $maskitto_light['blog-widgets'] == 1 ) ? '8' : '12'; ?> blog-column-left">
 				<div class="row blog-list">
 
-				<?php if ( have_posts() ) : ?>
+				<?php
+					$cat = (get_query_var('cat')) ? get_query_var('cat') : '';
+					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+					query_posts( array(
+						'post_type' => 'post',
+						'paged' => $paged,
+						'cat' => $cat
+					) );
+
+					if ( have_posts() ) :
+				?>
 
 					<?php /* Start the Loop */ ?>
 					<?php while ( have_posts() ) : the_post(); ?>
@@ -89,11 +83,15 @@ get_header();
 					<?php echo maskitto_light_paginate_links(); ?>
 				</div>
 			</div>
+
+			<?php if( !isset( $maskitto_light['blog-widgets'] ) || $maskitto_light['blog-widgets'] == 1 ) : ?>
 			<div class="col-md-4 blog-column-right">
 
 				<?php get_sidebar(); ?>
 
 			</div>
+			<?php endif; ?>
+			
 		</div>
 	</div>
 </div>

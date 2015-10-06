@@ -68,7 +68,7 @@ jQuery( document ).ready(function( $ ) {
 			if( $(this).children().length > 1 ) {
 
 				$(this).children().css( 'height', '' );
-				if( $(window).width() > 780 ) {
+				if( $(window).width() > 763 ) {
 					$(this).children().css( 'height', $(this).height() );
 				}
 
@@ -79,7 +79,7 @@ jQuery( document ).ready(function( $ ) {
 		/* Services widget height */
 		$( '.services-list' ).css( 'height', '' );
 		$( '.services-list' ).each(function() {
-			$(this).css( 'height', $(this).height() );
+			$(this).css( 'height', $(this).height()+2 );
 		});
 	}
 
@@ -92,6 +92,9 @@ jQuery( document ).ready(function( $ ) {
 
 	$(window).load(function(){
 		$( '.page-slideshow' ).addClass( 'page-loading' );
+		$( '.loading-animation-spinner' ).hide();
+		$( '.loading-animation' ).fadeOut('slow');
+		$( 'body' ).css('overflow', 'visible');
 	});
 
 	$('.slideshow').slick({
@@ -99,7 +102,7 @@ jQuery( document ).ready(function( $ ) {
 		autoplaySpeed: 6000,
 		infinite: true,
 		dots: true,
-		pauseOnHover: false
+		pauseOnHover: true
 	});
 
 	var centerthis = false;
@@ -118,8 +121,31 @@ jQuery( document ).ready(function( $ ) {
 		variableWidth: true,
 		prevArrow: '<button type="button" class="slick-prev partners-prev"><i class="fa fa-angle-left"></i></button>',
 		nextArrow: '<button type="button" class="slick-next partners-next"><i class="fa fa-angle-right"></i></button>',
+		responsive: [
+		    {
+		      breakpoint: 1000,
+		      settings: {
+		        slidesToShow: 1,
+		        slidesToScroll: 1,
+		        arrows: true,
+		        variableWidth: false,
+		      }
+		    }
+		],
 	});
 
+	$('.testimonials-list').slick({
+		autoplay: true,
+		autoplaySpeed: 4000,
+		dots: false,
+		infinite: true,
+		speed: 800,
+		slidesToShow: 1,
+		/*adaptiveHeight: true,*/
+		pauseOnHover: true,
+		arrows: false,
+		fade: true,
+	});
 
 	/* Full images */
 
@@ -127,12 +153,16 @@ jQuery( document ).ready(function( $ ) {
 		caption : {
 			add : true
 		},
+		buttons    : "inline",
+		/*effect     : "fade",*/
 	});
 
 	$('.post-gallery-list .post-gallery-item').tosrus({
 		caption : {
 			add : true
 		},
+		buttons    : "inline",
+		effect     : "fade",
 	});
 
 
@@ -197,6 +227,14 @@ jQuery( document ).ready(function( $ ) {
 		$("header, footer, #wrapper").css( "font-size", "13px" );
 		$(".header-details").addClass( "customizer-fix" );
 	}
+	
 
+	/* Fix for partners widget */
+
+	$( '.partner-item a' ).on( 'click', function() {
+		if( $(this).attr( 'href' ) == '#' ) {
+			return false;
+		}
+	});
 
 });

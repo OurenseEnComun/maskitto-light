@@ -56,8 +56,8 @@ if ( ! function_exists( 'maskitto_light_post_nav' ) ) :
         <div class="post-navigation">
             <div class="row">
                 <?php
-                    previous_post_link( '<div class="col-md-6 col-sm-6 nav-previous grey">%link</div>', '<i class="fa fa-angle-left"></i>Previous post', ''  );
-                    next_post_link(     '<div class="col-md-6 col-sm-6 nav-next text-right grey">%link</div>', 'Next post<i class="fa fa-angle-right"></i>', '' );
+                    previous_post_link( '<div class="col-md-6 col-sm-6 nav-previous grey">%link</div>', '<i class="fa fa-angle-left"></i>'.__( 'Previous post', 'maskitto-light' ), '' );
+                    next_post_link( '<div class="col-md-6 col-sm-6 nav-next text-right grey">%link</div>', __( 'Next post', 'maskitto-light' ).'<i class="fa fa-angle-right"></i>', '' );
                 ?>
             </div>
         </div>
@@ -243,6 +243,15 @@ if ( ! function_exists( 'maskitto_light_social_icons' ) ) :
 			<a href="<?php echo esc_url($maskitto_light['social-network-pinterest']); ?>"<?php echo $new_tab; ?>><i class="fa fa-pinterest"></i></a>
 		<?php } ?>
 
+		<?php if(isset($maskitto_light['social-network-behance']) && $maskitto_light['social-network-behance']){ ?>
+			<a href="<?php echo esc_url($maskitto_light['social-network-behance']); ?>"<?php echo $new_tab; ?>><i class="fa fa-behance"></i></a>
+		<?php } ?>
+
+		<?php if(isset($maskitto_light['social-network-tumblr']) && $maskitto_light['social-network-tumblr']){ ?>
+			<a href="<?php echo esc_url($maskitto_light['social-network-tumblr']); ?>"<?php echo $new_tab; ?>><i class="fa fa-tumblr"></i></a>
+		<?php } ?>
+
+
     <?php }
 
 endif;
@@ -259,6 +268,13 @@ if ( ! function_exists( 'maskitto_light_generate_css' ) ) :
 
 		if( isset( $maskitto_light ) ) : ob_start(); ?>
 			<style type="text/css">
+
+				<?php if( isset($maskitto_light['primary-color-hover']) && $maskitto_light['primary-color-hover'] != '#cf3d3d' ) :; ?>
+					body a:hover, body a:focus {
+						color: <?php echo esc_attr( $maskitto_light['primary-color-hover'] ); ?>;
+					}
+				<?php endif; ?>
+
 				<?php if( isset($maskitto_light['primary-color']) && $maskitto_light['primary-color'] && $maskitto_light['primary-color'] != '#e15454' ) { ?>
 					body a, body a:hover {
 						color: <?php echo esc_attr($maskitto_light['primary-color']); ?>;
@@ -267,17 +283,19 @@ if ( ! function_exists( 'maskitto_light_generate_css' ) ) :
 						color: <?php echo esc_attr($maskitto_light['primary-color']); ?>!important;
 					}
 
-					.service-icon, .service-line, .service-line-bottom, .current-menu-item a, .current_page_parent a, blockquote, header .navbar-nav .dropdown.open .dropdown-toggle, .contact-social-icons a {
+					.service-icon, .service-line, .service-line-bottom, .current-menu-item a, .current_page_parent a, blockquote, header .navbar-nav .dropdown.open .dropdown-toggle, .contact-social-icons a, .navbar-nav .current-post-parent a {
 						border-color: <?php echo esc_attr($maskitto_light['primary-color']); ?>!important;
 					}
 
-					.page-404, .btn-danger, .section-title-line, .blog-category, header .navbar-nav .dropdown.open .current-menu-item, .widget-area-2 .widget_search, .widget-area-2 .search-field, #wp-calendar #today, .blog-layout-2 #submit, .blog-layout-2 .comments-title, .wpcf7-submit {
+					.page-404, .btn-danger, .section-title-line, .blog-category, header .navbar-nav .dropdown.open .current-menu-item, .widget-area-2 .widget_search, .widget-area-2 .search-field, #wp-calendar #today,
+					.blog-layout-2 #submit, .blog-layout-2 .comments-title, .wpcf7-submit, .portfolio-categories-container .portfolio-categories li.active a, .portfolio-categories-container .portfolio-categories li.active:hover a,
+					.page-section-slogan .slogan-title, .testimonials-item, .back-top:hover, header .navbar-nav .dropdown .dropdown-menu .active {
 						background-color: <?php echo esc_attr($maskitto_light['primary-color']); ?>!important;
 					}
 
 					@media (min-width: 1000px) {
 
-						 header .navbar-nav .current-menu-item a, header .navbar-nav .current_page_parent a {
+						 header .navbar-nav .current-menu-item a, header .navbar-nav .current_page_parent a, .navbar-nav .current-post-parent a {
 							color: <?php echo esc_attr($maskitto_light['primary-color']); ?>!important;
 						}
 
@@ -310,12 +328,14 @@ if ( ! function_exists( 'maskitto_light_generate_css' ) ) :
 					}
 				<?php } ?>
 
+
 				<?php if( isset($maskitto_light['body-font']) ) { ?>
 					body, .section-content {
 						font-family: <?php echo esc_attr( $maskitto_light['body-font']['font-family'] ); ?>!important;
 						color: <?php echo esc_attr( $maskitto_light['body-font']['color'] ); ?>!important;
 					}
 				<?php } ?>
+
 
 				<?php if( isset($maskitto_light['blog-background']) ) { ?>
 					.page-blog {
@@ -330,9 +350,123 @@ if ( ! function_exists( 'maskitto_light_generate_css' ) ) :
 					}
 				<?php } ?>
 
+
 				<?php if( isset($maskitto_light['custom-css']) && $maskitto_light['custom-css'] ) { ?>
 					<?php echo html_entity_decode( esc_attr($maskitto_light['custom-css']) ); ?>
 				<?php } ?>
+
+
+				<?php if( isset($maskitto_light['header-top-accent']) && $maskitto_light['header-top-accent'] == 1 ) : ?>
+					header .header-details {
+						background-color: <?php echo esc_attr($maskitto_light['primary-color']); ?>;
+					}
+				<?php endif; ?>
+
+
+				<?php if( isset($maskitto_light['title-style']) && $maskitto_light['title-style'] == 2 ) : ?>
+
+					/* New titles */
+
+					.page-section h3 {
+						font-weight: bold;
+						font-size: 24px;
+						margin-bottom: 24px;
+					}
+
+					.page-section h3:before {
+						content: "- ";
+						color: <?php echo $maskitto_light['primary-color']; ?>;
+					}
+
+					.page-section h3:after {
+						content: " -";
+						color: <?php echo $maskitto_light['primary-color']; ?>;
+					}
+
+					.page-section .contact-section {
+						margin-top: -25px;
+					}
+
+					.page-section .subtitle {
+						font-size: 18px;
+						font-weight: 300;
+						padding-bottom: 0;
+					}
+
+					.page-section .section-title-line {
+						height: 3px!important;
+					}
+
+					.page-section .page-no-subtitle h3:first-child {
+						margin-bottom: 65px;
+					}
+
+					.page-section .page-no-subtitle .section-title-line {
+						display: none;
+					}
+
+				<?php endif; ?>
+
+
+				<?php if( isset($maskitto_light['button-style']) && $maskitto_light['button-style'] == 2 ) : ?>
+
+					/* New buttons */
+
+					.slide-details .btn-danger,
+					.slide-details .btn-white, {
+						font-weight: bold;
+						padding: 17px 28px 15px 28px;
+					}
+
+					.slide-details .btn-white {
+						padding: 15px 28px 13px 28px;
+					}
+
+					#wrapper .page-list .btn-default,
+					#wrapper .page-blog .btn-default {
+						border: 2px solid #8b8b8b;
+						border-width: 2px!important;
+						font-weight: bold;
+						margin-top: 36px!important;
+						padding: 15px 28px 13px 28px;
+					}
+
+				<?php endif; ?>
+
+
+				<?php if( isset($maskitto_light['slideshow-widget-style']) && $maskitto_light['slideshow-widget-style'] == 2 ) : ?>
+
+					.slide-details .slide-title {
+						font-size: 60px!important;
+					}
+
+					.slide-details .slide-info2 {
+						padding-bottom: 3px!important;
+					}
+
+					.slide-details .slide-info {
+						font-size: 18px!important;
+					}
+
+					.slide-details .slide-button {
+						padding-top: 50px!important;
+					}
+
+					.slide-details .slide-button i {
+						font-size: 14px;
+					}
+
+					#wrapper .slideshow .slideshow-slide {
+						box-shadow: inset  0  8px 8px -8px rgba(0,0,0,0.12),
+									inset  0 -8px 8px -8px rgba(0,0,0,0.12);
+					}
+
+					#wrapper .remove-shadow {
+						box-shadow: none!important;
+					}
+
+				<?php endif; ?>
+
 
 			</style>
 			<?php echo preg_replace( '/\s+/', ' ', ob_get_clean() ); 
@@ -474,6 +608,7 @@ if ( ! function_exists( 'maskitto_light_generate_page' ) ) :
 			$content = get_the_content();
 			$content = do_shortcode( apply_filters( 'the_content', $content ) );
 		endwhile;
+		wp_reset_postdata();
 
 
 		if( $id > 0 ) :
@@ -499,7 +634,10 @@ if ( ! function_exists( 'maskitto_light_generate_page' ) ) :
 	        $googlemaps_image = esc_url( get_post_meta( $id, 'wpcf-google-maps-image', true ));
 	        $googlemaps_url = esc_url( get_post_meta( $id, 'wpcf-google-maps-url', true ));
 	        $googlemaps_height = esc_attr( get_post_meta( $id, 'wpcf-google-maps-height', true ));
-	        $sociallinks = esc_attr( get_post_meta( $id, 'wpcf-social-links', true ));
+	        //$sociallinks = esc_attr( get_post_meta( $id, 'wpcf-social-links', true ));
+	        $page_template = esc_attr( get_post_meta( $id, '_wp_page_template', true ) );
+
+			$parallax = esc_attr( get_post_meta( get_the_ID(), 'wpcf-background-image-parallax', true ));
 
 
 	        if( $padding == 'small' ) {
@@ -535,15 +673,21 @@ if ( ! function_exists( 'maskitto_light_generate_page' ) ) :
 
 	        /* Check content for widgets */
 	        $widgets_count = 0;
-			preg_match('/div class="page-section"/s', $content, $matches);
+	        $matches = '';
+
+	        if( isset($content) && $content ) :
+				preg_match('/div class="page-section"/s', $content, $matches);
+			endif;
+
+
 			if( count($matches) > 0 ) {
 				$style1.= "padding-bottom: 0px!important;";
 				$widgets_count = count( $matches );
 			}
 
 	    ?>
-	        <div id="page-id-<?php echo $id; ?>" class="page-section" style="<?php echo $style1; ?>">
-	            <div class="container page-list">
+	        <div id="page-id-<?php echo $id; ?>" class="page-section<?php echo ($parallax) ? ' parallax-simple' : ''; ?>" style="<?php echo $style1; ?>">
+	            <div class="container page-list<?php echo ( !$subtitle ) ? ' page-no-subtitle' : ''; ?>">
 
 
 	                <?php if( $titlebar == 'small' ) : ?>
@@ -552,7 +696,7 @@ if ( ! function_exists( 'maskitto_light_generate_page' ) ) :
 	                        <?php echo $title; ?>
 	                        <?php echo maskitto_light_admin_edit($id); ?>
 	                    </h4>
-	                    <?php if( $content && $widgets_count == 0 ) : ?>
+	                    <?php if( $content && $widgets_count == 0 && $page_template != 'template-contact.php' ) : ?>
 	                        <div class="page-node section-content" style="<?php echo $style2; ?>">
 	                            <div class="post-inner" style=" font-size: 13px; padding-top: 10px;">
 	                                <?php echo $content; ?>
@@ -568,7 +712,7 @@ if ( ! function_exists( 'maskitto_light_generate_page' ) ) :
 	                            <?php echo maskitto_light_admin_edit($id); ?>
 	                        </div>
 	                    </div>
-	                    <?php if( $content && $widgets_count == 0 ) { ?>
+	                    <?php if( $content && $widgets_count == 0 && $page_template != 'template-contact.php' ) { ?>
 	                        <div class="page-node section-content-large" style="<?php echo $style2; ?>">
 	                            <div class="post-inner">
 	                                <?php echo $content; ?>
@@ -599,7 +743,7 @@ if ( ! function_exists( 'maskitto_light_generate_page' ) ) :
 	                        <div class="page-node text-center" style="margin-bottom: 10px;"><?php echo maskitto_light_admin_edit($id); ?></div>
 	                    <?php endif; ?>
 
-	                    <?php if( $content && $widgets_count == 0 && !$googlemaps_height ) : ?>
+	                    <?php if( isset($content) && $content && $widgets_count == 0 && $page_template != 'template-contact.php' ) : ?>
 	                        <div class="page-node section-content" style="<?php echo $style2; ?>">
 	                            <div class="post-inner">
 	                                <?php echo $content; ?>
@@ -610,40 +754,39 @@ if ( ! function_exists( 'maskitto_light_generate_page' ) ) :
 	                <?php endif; ?>
 
 
-	                <?php if( $googlemaps_height ) { ?>
+	                <?php if( $page_template == 'template-contact.php' && $googlemaps_height ) { ?>
 	                    <div class="page-node contact-section">
-	                        <div class="contact-subtitle"><?php _e( 'Information', 'maskitto-light' ); ?></div>
-	                        <div><div class="post-inner"><?php echo $content; ?></div></div>
-
-	                        <?php if( isset( $sociallinks ) && $sociallinks == '1' ) { ?>
+	                        <div>
+	                        	<div class="post-inner"><?php echo $content; ?></div>
+	                        </div>
+	                        <?php global $maskitto_light;
+	                        if( isset($maskitto_light['contacts-social-icons']) && $maskitto_light['contacts-social-icons'] == 1 ) : ?>
 	                            <div class="contact-social-icons">  
 	                                <?php echo maskitto_light_social_icons(); ?>
 	                            </div>
-	                        <?php } ?>
+	                        <?php endif; ?>
 	                    </div>
 	                <?php } ?>            
 
 
+	                <?php if( $button_name ) { ?>
+	                    <a href="<?php echo $button_url; ?>" class="btn btn-default page-node section-button section-button-<?php echo $button_type; ?>">
+	                        <?php if( $button_icon ) { ?>
+	                            <i class="fa <?php echo $button_icon; ?>"></i>
+	                        <?php } ?>
+	                        <?php echo $button_name; ?>
+	                    </a>
+	                <?php } ?>
+	                
+
 					<?php if( $front == 1 ) : ?>
-		                <?php if( $button_name ) { ?>
-		                    <a href="<?php echo $button_url; ?>" class="btn btn-default page-node section-button section-button-<?php echo $button_type; ?>">
-		                        <?php if( $button_icon ) { ?>
-		                            <i class="fa <?php echo $button_icon; ?>"></i>
-		                        <?php } ?>
-		                        <?php echo $button_name; ?>
-		                    </a>
-		                <?php } ?>
-
-
-		                <?php if( $readmore ) { ?>
+		                <?php if( $readmore && !preg_match('/<!--more(.*?)?-->/', get_post_field( 'post_content', $id ) ) ) { ?>
 		                    <a href="<?php echo esc_url( get_permalink( $id ) ); ?>" class="btn btn-default page-node">
 		                        <i class="fa fa-angle-right"></i>
 		                        <?php _e( 'Read more', 'maskitto-light' ); ?>
 		                    </a>
 		                <?php } ?>
 	                <?php endif; ?>
-
-
 	            </div>
 	        </div>
 
@@ -657,5 +800,143 @@ if ( ! function_exists( 'maskitto_light_generate_page' ) ) :
 
 
 		<?php endif; 
+	}
+endif;
+
+
+if ( ! function_exists( 'maskitto_light_portfolio_items' ) ) :
+	function maskitto_light_portfolio_items( $category = '', $limit, $widget_group, $hidden ) {
+
+        if( !isset($limit) ||  !$limit || $limit == '-1' ) :
+            $limit = 200;
+        endif;
+
+        $count_portfolio = wp_count_posts( 'portfolio-item' );
+        if( isset( $count_portfolio->publish ) && $count_portfolio->publish > 0) :
+            $post_type = 'portfolio-item';
+        else :
+            $post_type = 'portfolio';
+        endif;
+
+        $loop_array = array(
+            'post_type' => $post_type,
+            'posts_per_page' => $limit,
+        );
+
+        $loop_array20 = array();
+        if( isset( $widget_group ) && $widget_group != '' ) : 
+            $loop_array2 = array(
+                array(
+                    'taxonomy' => 'porfolio-group',
+                    'field'    => 'slug',
+                    'terms'    =>  $widget_group,
+                ),
+            );
+            $loop_array20 = array_merge( $loop_array20, $loop_array2 );
+        endif;
+        if( isset( $category ) && $category != '' ) : 
+            $loop_array2 = array(
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'slug',
+                    'terms'    =>  $category,
+                ),
+            );
+            $loop_array20 = array_merge( $loop_array20, $loop_array2 );
+        endif;
+
+
+
+		if( ( isset( $widget_group ) && $widget_group != '' ) || ( isset( $category ) && $category != '' ) ) : 
+			$loop_array3 = array(
+                'tax_query' => array(
+                    $loop_array20
+                ),
+            );
+			$loop_array = array_merge( $loop_array, $loop_array3 );
+		endif;
+
+
+
+        $loop = new WP_Query( $loop_array );
+        while ( $loop->have_posts() ) : $loop->the_post();
+
+            $style1 = (string) NULL;
+            $image = esc_url( get_post_meta( get_the_ID(), 'wpcf-background-image', true ));
+            $caption = esc_attr( get_post_meta( get_the_ID(), 'wpcf-caption', true ));
+            $url = esc_url( get_post_meta( get_the_ID(), 'wpcf-url', true ));
+
+            if( $image ) :
+                $style1.= "background-image: url($image);";
+            endif;
+
+            if( $url ) :
+                $image = $url;
+            endif;
+
+    ?>
+    <a href="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="col-md-3 col-sm-6 portfolio-item">
+        <div class="portfolio-thumb" style="<?php echo $style1; ?>"></div>
+        <div class="portfolio-details">
+            <div class="portfolio-details-align"<?php if( $hidden ) : ?> style="display: none;"<?php endif; ?>>
+                <div class="portfolio-title"><?php the_title(); ?></div>
+                <?php if( $caption ) : ?>
+                    <div class="portfolio-info"><?php echo nl2br( $caption ); ?></div>
+                <?php endif; ?>
+                <?php
+                $cat = get_the_category();
+                if( count($cat) && $cat[0]->name ) : ?>
+                	<?php
+	                	$o = array();
+	                	foreach ( $cat as $c ) :
+	                		$o[] = $c->name;
+	                	endforeach;
+                	?>
+
+                    <div class="portfolio-line"></div>
+                    <div class="portfolio-cat"><?php echo join( ' / ', $o ); ?></div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </a>
+    <?php endwhile;
+
+	}
+endif;
+
+/* Fix for some categorie issues, inspired from - http://wordpress.stackexchange.com/questions/169690/display-tags-belonging-to-a-specific-post-type-only */
+if ( ! function_exists( 'maskitt_light_get_terms_per_post_type' ) ) :
+	function maskitt_light_get_terms_per_post_type( $taxonomies, $args = array() ) {
+
+	    /*$args = wp_parse_args($args);
+	    if( isset( $args['post_type'] ) ){
+
+	        $args['post_type'] = (array)$args['post_type'];
+
+	        add_filter( 'terms_clauses', function ( $pieces, $tax, $args){
+	            global $wpdb;
+
+	            $args['post_type'] = array( 'post' );
+
+	            //Don't use db count
+	            $pieces['fields'] .= ", COUNT(*) AS count_type" ;
+
+	            //Join extra tables to restrict by post type.
+	            $pieces['join'] .= " INNER JOIN $wpdb->term_relationships AS r ON r.term_taxonomy_id = tt.term_taxonomy_id 
+	                                 INNER JOIN $wpdb->posts AS p ON p.ID = r.object_id ";
+
+	            //Restrict by post type and Group by term_id for COUNTing.
+	            $post_type = implode( ',', $args['post_type'] );
+	            $pieces['where'] .= $wpdb->prepare( " AND p.post_type IN(%s) GROUP BY t.term_id", $post_type );
+
+	            remove_filter( current_filter(), __FUNCTION__ );
+
+	            return $pieces;
+
+	        }, 10, 3 );
+
+	    }*/
+
+	    return get_terms($taxonomies, $args);
 	}
 endif;

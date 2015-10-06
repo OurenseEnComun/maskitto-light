@@ -31,26 +31,10 @@ get_header();
 		<div class="container">
 			<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="category-item active-category"><?php _e( 'All', 'maskitto-light' ); ?></a>
 			<?php
-
-			$args = array(
-				'type'                     => 'post',
-				'child_of'                 => 0,
-				'parent'                   => '',
-				'orderby'                  => 'count',
-				'order'                    => 'desc',
-				'hide_empty'               => 1,
-				'hierarchical'             => 1,
-				'exclude'                  => '',
-				'include'                  => '',
-				'number'                   => '',
-				'taxonomy'                 => 'category',
-				'pad_counts'               => false 
-			);
-
-			$categories = get_categories( $args );
-			foreach ($categories as $category) { ?>
-				<a href="<?php echo get_category_link( $category->term_id ); ?>" class="category-item"><?php echo $category->cat_name; ?></a>
-			<?php } ?>
+			$categories = maskitt_light_get_terms_per_post_type( 'category', array( 'post_type' => 'post' ) );
+			foreach ($categories as $category) : ?>
+				<a href="<?php echo get_category_link( $category->term_id ); ?>" class="category-item"><?php echo $category->name; ?></a>
+			<?php endforeach; ?>
 			<?php if( count( $categories ) > 6 ) { ?>
 				<a href="#" class="category-item category-show-all"><?php _e( '(more)', 'maskitto-light' ); ?></a>
 			<?php } ?>
@@ -62,7 +46,7 @@ get_header();
 <div class="page-section page-blog">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 blog-column-left">
+			<div class="col-md-<?php echo ( !isset( $maskitto_light['blog-widgets'] ) || $maskitto_light['blog-widgets'] == 1 ) ? '8' : '12'; ?> blog-column-left">
 				<div class="row blog-list">
 
 				<?php if ( have_posts() ) : ?>
@@ -87,11 +71,15 @@ get_header();
 					</div>
 				</div>
 			</div>
+
+			<?php if( !isset( $maskitto_light['blog-widgets'] ) || $maskitto_light['blog-widgets'] == 1 ) : ?>
 			<div class="col-md-4 blog-column-right">
 
 				<?php get_sidebar(); ?>
 
 			</div>
+			<?php endif; ?>
+
 		</div>
 	</div>
 </div>

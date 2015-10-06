@@ -175,6 +175,8 @@ if( !function_exists('maskitto_light_enqueue_styles') ) :
 
         global $maskitto_light;
 
+        wp_enqueue_script( 'maskitto-light-hammer', get_template_directory_uri() . '/js/hammer.min.js', array( 'jquery' ) );
+
         if( !isset( $maskitto_light['minity-status'] ) || $maskitto_light['minity-status'] == 1 ) :
 
             wp_enqueue_style( 'maskitto-light-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css' );
@@ -187,6 +189,9 @@ if( !function_exists('maskitto_light_enqueue_styles') ) :
             wp_enqueue_script( 'maskitto-light-jquery-tosrus-min', get_template_directory_uri() . '/js/jquery.tosrus.min.all.js', array( 'jquery' ));
             wp_enqueue_script( 'maskitto-light-waypoint-min', get_template_directory_uri() . '/js/jquery.waypoints.min.js', array( 'jquery' ));
             wp_enqueue_script( 'maskitto-light-counterup-min', get_template_directory_uri() . '/js/jquery.counterup.min.js', array( 'jquery' ));
+
+            //wp_enqueue_script( 'maskitto-light-google-maps', '//maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7' );
+            //wp_enqueue_script( 'maskitto-light-maplace-min', get_template_directory_uri() . '/js/jquery.maplace.min.js', array( 'jquery' ));
 
         else :
 
@@ -201,7 +206,11 @@ if( !function_exists('maskitto_light_enqueue_styles') ) :
             wp_enqueue_script( 'maskitto-light-waypoint', get_template_directory_uri() . '/js/jquery.waypoints.js', array( 'jquery' ));
             wp_enqueue_script( 'maskitto-light-counterup', get_template_directory_uri() . '/js/jquery.counterup.js', array( 'jquery' ));
 
+            //wp_enqueue_script( 'maskitto-light-google-maps', '//maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7' );
+            //wp_enqueue_script( 'maskitto-light-maplace', get_template_directory_uri() . '/js/jquery.maplace.js', array( 'jquery' ));
+
         endif;
+
 
         wp_enqueue_style( 'maskitto-light-responsive-style', get_template_directory_uri() . '/css/responsive.css' );
         wp_enqueue_style( 'maskitto-light-owl-carousel', get_template_directory_uri() . '/css/slick.css' );
@@ -468,6 +477,54 @@ if (class_exists('ReduxFramework')) {
 
     endif;
 
+
+    /**
+     * Initialize testimonials columns
+     */
+
+    if ( !function_exists( 'maskitto_light_add_testimonials_columns' ) && !function_exists( 'maskitto_light_manage_testimonials_columns' ) ) :
+
+        add_filter('manage_edit-testimonials_columns', 'maskitto_light_add_testimonials_columns');
+
+        function maskitto_light_add_testimonials_columns($testimonials_columns) {
+
+            $new_columns['cb'] = '<input type="checkbox" />';
+            $new_columns['title'] = __( 'Author name', 'maskitto-light' );
+            $new_columns['author-description'] = __( 'Author description', 'maskitto-light' );
+            $new_columns['quote'] = __( 'Quote', 'maskitto-light' );
+            $new_columns['image'] = __( 'Image', 'maskitto-light' );
+            $new_columns['author'] = __( 'Author', 'maskitto-light' );
+            $new_columns['date'] = __( 'Date', 'maskitto-light' );
+         
+            return $new_columns;
+        }
+
+
+        add_action('manage_testimonials_posts_custom_column', 'maskitto_light_manage_testimonials_columns', 10, 2);
+         
+        function maskitto_light_manage_testimonials_columns($column_name, $id) {
+            global $wpdb;
+            switch ($column_name) {
+            case 'author-description':
+                $caption = esc_attr( get_post_meta( $id, 'wpcf-author-description', true ) );
+                if($caption)echo $caption;
+                break;
+            case 'quote':
+                $caption = esc_attr( get_post_meta( $id, 'wpcf-quote', true ) );
+                if($caption)echo $caption;
+                break;
+            case 'image':
+                $image = esc_url( get_post_meta( $id, 'wpcf-quote-image', true ) );
+                if($image)echo '<img src="'.$image.'" alt="" height="85" />';
+                break;
+            default:
+                break;
+            }
+        }  
+
+    endif;
+
+
 }
 
 
@@ -508,6 +565,16 @@ add_action('widgets_init',
 require get_template_directory() . "/inc/widgets/sh-counter.php";
 add_action('widgets_init',
      create_function('', 'return register_widget("Maskitto_Counter");')
+);
+
+require get_template_directory() . "/inc/widgets/sh-testimonials.php";
+add_action('widgets_init',
+     create_function('', 'return register_widget("Maskitto_Testimonials");')
+);
+
+require get_template_directory() . "/inc/widgets/sh-slogan.php";
+add_action('widgets_init',
+     create_function('', 'return register_widget("Maskitto_Slogan");')
 );
 
 
@@ -561,8 +628,29 @@ add_filter('siteorigin_panels_widget_dialog_tabs', 'maskitto_light_add_widget_ta
 
 function maskitto_light_header_seach_form( $form ) {
     $form = '<form role="search" method="get" action="'.esc_url( home_url() ).'">';
-    $form .= '<input type="text" name="s" value="'.esc_html( get_search_query( false ) ).'" placeholder="'.__( 'Search here..', 'maskitto-light' ).'" />';
+    $form .= '<input type="text" class="top-search-field" name="s" value="'.esc_html( get_search_query( false ) ).'" placeholder="'.__( 'Search here..', 'maskitto-light' ).'" />';
     $form .= '</form>';
     return $form;
 }
 add_filter( 'get_search_form', 'maskitto_light_header_seach_form' );
+
+
+/* Custom read more button */
+
+add_filter( 'the_content_more_link', 'maskitto_light_modify_read_more_link' );
+function maskitto_light_modify_read_more_link() {
+    return '<a href="' . get_permalink() . '" class="btn btn-default page-node"><i class="fa fa-angle-right"></i>'.__( 'Read more', 'maskitto-light' ).'</a>';
+}
+
+
+/* Preview word limit */
+
+if( isset($maskitto_light['preview-word-limit']) && $maskitto_light['preview-word-limit'] >= 10 ) :
+    function maskitto_light_custom_excerpt_length( $length ) {
+        GLOBAL $maskitto_light;
+        return intval( $maskitto_light['preview-word-limit'] );
+    }
+    add_filter( 'excerpt_length', 'maskitto_light_custom_excerpt_length', 999 );
+endif;
+
+?>

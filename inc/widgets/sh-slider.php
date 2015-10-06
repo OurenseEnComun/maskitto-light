@@ -22,8 +22,27 @@ class Maskitto_Slider extends WP_Widget {
         if( isset( $sliders->publish ) && $sliders->publish > 0){
 
             $widget_group = ( isset( $instance['widget_group'] ) ) ? esc_attr( $instance['widget_group'] ) : '';
+            $desktop_height = ( isset( $instance['desktop_height'] ) ) ? esc_attr( $instance['desktop_height'] ) : '';
 
     ?>
+
+        <?php if( $desktop_height > 400 ) : ?>
+            <style type="text/css">
+
+                /* Custom slideshow height */
+                @media (min-width: 1070px) {
+
+                    #wrapper .page-slideshow {
+                        height: <?php echo $desktop_height; ?>px;
+                        max-height: <?php echo $desktop_height; ?>px;
+                    }
+
+                }
+
+            </style>
+        <?php endif; ?>
+
+
         <div class="page-slideshow widget-slider-<?php if( $widget_group ) : echo $widget_group; else : echo 'all'; endif; ?>">
             <i class="fa fa-circle-o-notch fa-spin"></i>
             <div class="slideshow">
@@ -54,6 +73,7 @@ class Maskitto_Slider extends WP_Widget {
 
                         $image = esc_url( get_post_meta( get_the_ID(), 'wpcf-background-image', true ));
                         $caption = esc_attr( get_post_meta( get_the_ID(), 'wpcf-caption', true ));
+                        $caption2 = esc_attr( get_post_meta( get_the_ID(), 'wpcf-caption2', true ));
 
                         $button_name = esc_attr( get_post_meta( get_the_ID(), 'wpcf-button-name', true ));
                         $button_url = esc_url( get_post_meta( get_the_ID(), 'wpcf-button-url', true ));
@@ -104,11 +124,17 @@ class Maskitto_Slider extends WP_Widget {
                         }
 
                 ?>
-                    <div class="slideshow-slide<?php echo $class1; ?>" style="<?php echo $style1; ?>">
+                    <div class="<?php if(class_exists("Jetpack")) : echo 'sh-'; endif; ?>slideshow-slide<?php echo $class1; ?>" style="<?php echo $style1; ?>">
                         <div class="slide-patern<?php echo $class2; ?>">
                             <div class="container">
                                 <div class="slide-details">
-                                    <div class="slide-title"><?php the_title(); ?><?php echo maskitto_light_admin_edit(get_the_ID()); ?></div>
+                                    <div><?php echo maskitto_light_admin_edit(get_the_ID()); ?></div>
+                                
+                                    <?php if( $caption2 ) : ?>
+                                        <div class="slide-info2"><?php echo $caption2; ?></div>
+                                    <?php endif; ?>
+
+                                    <div class="slide-title"><?php the_title(); ?></div>
                                     <div></div>
                                     <?php if( $caption ) { ?>
                                         <div class="slide-info"><?php echo $caption; ?></div>
@@ -149,9 +175,9 @@ class Maskitto_Slider extends WP_Widget {
     /* Back-end widget form. */
     public function form( $r ) {
 
-        $slide_height = 480; 
-        if ( isset( $r[ 'slide_height' ] ) ) :
-            $slide_height = esc_attr( $instance[ 'slide_height' ] );
+        $desktop_height = 500; 
+        if ( isset( $r[ 'desktop_height' ] ) && $r[ 'desktop_height' ] > 0 ) :
+            $desktop_height = esc_attr( $r[ 'desktop_height' ] );
         endif;
 
         $widget_group = '';
@@ -161,7 +187,18 @@ class Maskitto_Slider extends WP_Widget {
 
         ?>
 
-        <div class="widget-option no-border">
+        <div class="widget-option">
+            <div class="widget-th">
+                <label for="desktop_height"><b><?php _e( 'Height', 'maskitto-light' ); ?></b></label> 
+            </div>
+            <div class="widget-td">
+                <input class="wideslim" id="desktop_height" name="<?php echo $this->get_field_name( 'desktop_height' ); ?>" type="number" value="<?php echo esc_attr( $desktop_height ); ?>">
+                <p><?php _e( 'Enter slide height for desktop devices (default height is 500px, min height is 400)', 'maskitto-light' ); ?></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="widget-option">
             <div class="widget-th">
                 <label for=""><b><?php _e( 'Content', 'maskitto-light' ); ?></b></label> 
             </div>
@@ -169,7 +206,7 @@ class Maskitto_Slider extends WP_Widget {
 
                 <?php if ( post_type_exists( 'slider' ) ) : ?>
                     <a href="<?php echo admin_url( 'edit.php?post_type=slider' ); ?>" target="_blank" class="widget-edit-button">
-                        <?php _e( 'Manage slider content', 'maskitto-light' ); ?>
+                        <?php _e( 'Manage slider content', 'maskitto-light' ); ?> 
                     </a>
                 <?php else : ?>
                     <p><?php _e( 'Please import <i>Types</i> plugin XML file from our documentation to access this option.', 'maskitto-light' ); ?></p>
@@ -210,6 +247,7 @@ class Maskitto_Slider extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = array();
         $instance['widget_group'] = ( ! empty( $new_instance['widget_group'] ) ) ? esc_attr( $new_instance['widget_group'] ) : '';
+        $instance['desktop_height'] = ( ! empty( $new_instance['desktop_height'] ) && $new_instance['desktop_height'] > 400 ) ? intval( $new_instance['desktop_height'] ) : '500';
 
         return $instance;
     }

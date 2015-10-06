@@ -22,6 +22,52 @@ $enable_javascript = 'http://www.enable-javascript.com';
 </head>
 <body <?php body_class(); ?>>
 
+
+<?php
+	$loading_animation = 0;
+	if( isset($maskitto_light['loading-animation']) && $maskitto_light['loading-animation'] == 2 ) : 
+		if (strpos(wp_get_referer(), get_home_url()) !== false) :
+			$loading_animation = 0;
+		else :
+			$loading_animation = 1;
+		endif;
+	endif; ?>
+
+<?php if( isset($maskitto_light['loading-animation']) && ( $maskitto_light['loading-animation'] == 1 || $loading_animation == 1 ) ) : ?>
+	<div class="loading-animation">
+		<div class="loading-animation-spinner spinner">
+			<div class="double-bounce1"></div>
+			<div class="double-bounce2"></div>
+		</div>
+	</div>
+	<style>
+		/* Loading animation keyframe and style */
+		body {
+			overflow: hidden;
+		}
+
+		.double-bounce1, .double-bounce2 {
+			background-color: <?php echo $maskitto_light['primary-color']; ?>;
+		}
+
+		@-webkit-keyframes bounce {
+			0%, 100% { -webkit-transform: scale(0.0) }
+			50% { -webkit-transform: scale(1.0) }
+		}
+
+		@keyframes bounce {
+			0%, 100% { 
+				transform: scale(0.0);
+				-webkit-transform: scale(0.0);
+			} 50% { 
+				transform: scale(1.0);
+				-webkit-transform: scale(1.0);
+			}
+		}
+	</style>
+<?php endif; ?>
+
+
 <?php if( isset($maskitto_light['page-layout']) && $maskitto_light['page-layout'] == 2 ) : ?>
 	<div class="boxed-layout">
 <?php elseif( isset($maskitto_light['page-layout']) && $maskitto_light['page-layout'] == 3 ) : ?>
@@ -43,8 +89,9 @@ $enable_javascript = 'http://www.enable-javascript.com';
 				echo ' framework-ok';
 			endif;
 		?>"<?php if( !isset($maskitto_light['header-sticky']) || $maskitto_light['header-sticky'] == 1 ) : ?> data-sticky="1"<?php endif; ?>>
+
 		<?php if( ( isset( $maskitto_light['header-contacts'] ) && isset( $maskitto_light['header-social'] ) ) && ( $maskitto_light['header-contacts'] || $maskitto_light['header-social'] ) ) : ?>
-		<div class="header-details">
+		<div class="header-details<?php echo ( isset($maskitto_light['header-top-accent']) && $maskitto_light['header-top-accent'] == 1 ) ? ' header-details-accent-color' : ''; ?>">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-7 col-sm-7 our-info">
@@ -67,23 +114,18 @@ $enable_javascript = 'http://www.enable-javascript.com';
 							<?php if(isset($maskitto_light['header-search']) && $maskitto_light['header-search']) : ?>
 								<span class="search-input">
 									<i class="fa fa-search"></i>
-									<?php 
-										get_search_form();
-
-										/* Reset search from layout to default */
-										remove_filter( 'get_search_form', 'maskitto_light_header_seach_form' );
-									?>
+									<?php get_search_form(); ?> 
 								</span>
 							<?php endif; ?>
-
 						<?php endif; ?>
 					</div>
 				</div>
 			</div>
-			<?php elseif( isset($maskitto_light['header-layout']) && ( $maskitto_light['header-layout'] == 2 || $maskitto_light['header-layout'] == 3 ) ) : ?>
-				<div style="height: 53px;"></div>
-			<?php endif; ?>
 		</div>
+		<?php elseif( isset($maskitto_light['header-layout']) && ( $maskitto_light['header-layout'] == 2 || $maskitto_light['header-layout'] == 3 ) ) : ?>
+			<div style="height: 53px;"></div>
+		<?php endif; ?>
+		
 		<nav class="primary navbar navbar-default" role="navigation">
 
 			<div class="container">
@@ -93,15 +135,15 @@ $enable_javascript = 'http://www.enable-javascript.com';
 					</button>
 					<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 						<?php if(isset($maskitto_light['logo-image']) && $maskitto_light['logo-image']['url']) : ?>
-							<img src="<?php echo esc_url( $maskitto_light['logo-image']['url']); ?>" alt="" />
+							<img src="<?php echo esc_url( $maskitto_light['logo-image']['url']); ?>" alt="<?php echo get_bloginfo( 'name' ); ?>" />
 						<?php elseif( get_header_image() ) : ?>
-							<img src="<?php echo esc_url( header_image() ); ?>" alt="" />
+							<img src="<?php echo esc_url( header_image() ); ?>" alt="<?php echo get_bloginfo( 'name' ); ?>" />
 						<?php elseif( isset($maskitto_light['header-layout']) ) : ?>
 
 							<?php if( $maskitto_light['header-layout'] == 2 ) : ?>
-								<div style="height: 53px;"></div>
+								<div class="desktop-only" style="height: 53px;"></div>
 							<?php elseif( $maskitto_light['header-layout'] == 3 ) : ?>
-								<div style="height: 28px;"></div>
+								<div class="desktop-only" style="height: 28px;"></div>
 							<?php endif; ?>
 							
 						<?php endif; ?>
@@ -114,7 +156,7 @@ $enable_javascript = 'http://www.enable-javascript.com';
 						wp_nav_menu( array(
 							'theme_location' => 'primary',
 							'menu' => 'Primary navigation',
-							'depth' => 2,
+							'depth' => 3,
 							'container' => false,
 							'fallback_cb' => 'false',
 							'menu_class' => 'nav navbar-nav navbar-right navbar-primary',
@@ -134,14 +176,14 @@ $enable_javascript = 'http://www.enable-javascript.com';
 						</ul>
 					<?php endif; ?>
 
-					<ul id="menu-header-menu-1" class="nav navbar-nav navbar-right navbar-secondary">
-						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-102"><a href="#"><?php _e( 'Social links', 'maskitto-light' ); ?></a></li>
-						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-102 menu-social-icons">
-						<?php if(isset($maskitto_light['header-social']) && $maskitto_light['header-social']){ ?>
-							<?php echo maskitto_light_social_icons(); ?>
-						<?php } ?>
-						</li>
-					</ul>
+					<?php if(isset($maskitto_light['header-social']) && $maskitto_light['header-social']) : ?>
+						<ul id="menu-header-menu-1" class="nav navbar-nav navbar-right navbar-secondary">
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-102"><a href="#"><?php _e( 'Social links', 'maskitto-light' ); ?></a></li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-102 menu-social-icons">
+								<?php echo maskitto_light_social_icons(); ?>
+							</li>
+						</ul>
+					<?php endif; ?>
 
 				</div>
 			</div>
@@ -152,5 +194,13 @@ $enable_javascript = 'http://www.enable-javascript.com';
 	<div id="wrapper">
 
 		<noscript>
-			<div class="enable-javascript"><?php _e( 'Javascript is disabled in your web browser. Please enable it', 'maskitto-light' ); ?> <a href="<?php echo esc_attr($enable_javascript); ?>" target="_blank" style="color:#fff;"><?php _e( '(see how)', 'maskitto-light' ); ?></a>.</div>
+			<div class="enable-javascript">
+				<?php _e( 'Javascript is disabled in your web browser. Please enable it', 'maskitto-light' ); ?> 
+				<a href="<?php echo esc_attr($enable_javascript); ?>" target="_blank" style="color:#fff;"><?php _e( '(see how)', 'maskitto-light' ); ?></a>.
+			</div>
 		</noscript>
+
+	<?php 
+		/* Reset search from layout to default */ 
+		remove_filter( 'get_search_form', 'maskitto_light_header_seach_form' ); 
+	?>

@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="no-results not-found">
+<section class="no-results not-found <?php if( !isset($maskitto_light['blog-layout']) || $maskitto_light['blog-layout'] == 1 ) { echo'widget-area-2'; } ?>">
 	<aside id="recent-posts-2" class="widget widget_recent_entries">
 		<h1 class="widget-title"><?php _e( 'Nothing Found', 'maskitto-light' ); ?></h1>
 

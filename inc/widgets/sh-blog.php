@@ -18,7 +18,13 @@ class Maskitto_Blog extends WP_Widget {
 
     /* Front-end display of widget. */
     public function widget( $args, $instance ) {
-        $loop = new WP_Query( array('post_type' => 'post', 'posts_per_page' => 6 ) );
+        if( !isset($instance['limit']) || !$instance['limit']) :
+            $limit = 6;
+        else :
+            $limit = intval( $instance['limit'] );
+        endif;
+
+        $loop = new WP_Query( array('post_type' => 'post', 'posts_per_page' => $limit ) );
         $count_posts = wp_count_posts();
     ?>
 
@@ -32,7 +38,9 @@ class Maskitto_Blog extends WP_Widget {
                     <?php if( $instance['subtitle'] ){ ?>
                         <div class="subtitle"><p><?php echo esc_attr( $instance['subtitle'] ); ?></p></div>
                     <?php } ?>
-                    <div class="section-title-line"></div>
+                    <?php if( $instance['title'] || $instance['subtitle'] ){ ?>
+                        <div class="section-title-line"></div>
+                    <?php } ?>
                 </div>
 
                 <div class="row blog-list">
@@ -41,12 +49,12 @@ class Maskitto_Blog extends WP_Widget {
                     <?php endwhile; ?>
                 </div>
 
-                <?php if( $count_posts->publish > 6 ) { ?>
-                    <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="btn btn-default">
+                <?php if( $count_posts->publish > 6 ) : ?>
+                    <a href="<?php echo (get_option( 'show_on_front' ) == 'page') ? get_permalink( get_option('page_for_posts' ) ) : esc_url( home_url() ); ?>" class="btn btn-default">
                         <i class="fa fa-angle-right"></i>
                         <?php _e( 'Load more', 'maskitto-light' ); ?>
                     </a>
-                <?php } ?>
+                <?php endif; ?>
 
             </div>
         </div>
@@ -58,6 +66,7 @@ class Maskitto_Blog extends WP_Widget {
     public function form( $instance ) {
         $title = (string) NULL;
         $subtitle = (string) NULL;
+        $limit = (string) NULL;
 
         if ( isset( $instance[ 'title' ] ) ) {
             $title = esc_attr( $instance[ 'title' ] );
@@ -66,15 +75,19 @@ class Maskitto_Blog extends WP_Widget {
         if ( isset( $instance[ 'subtitle' ] ) ) {
             $subtitle = esc_attr( $instance[ 'subtitle' ] );
         }
+
+        if ( isset( $instance[ 'limit' ] ) ) {
+            $limit = intval( $instance[ 'limit' ] );
+        }
         
         ?>
 
         <div class="widget-option">
             <div class="widget-th">
-                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><b><?php _e( 'Title', 'maskitto-light' ); ?></b></label> 
+                <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><b><?php _e( 'Title', 'maskitto-light' ); ?></b></label> 
             </div>
             <div class="widget-td">
-                <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+                <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
                 <p><?php _e( 'This field is optional', 'maskitto-light' ); ?></p>
             </div>
             <div class="clearfix"></div>
@@ -82,10 +95,26 @@ class Maskitto_Blog extends WP_Widget {
 
         <div class="widget-option">
             <div class="widget-th">
-                <label for="<?php echo $this->get_field_id( 'subtitle' ); ?>"><b><?php _e( 'Subitle', 'maskitto-light' ); ?></b></label> 
+                <label for="<?php echo esc_attr( $this->get_field_id( 'subtitle' ) ); ?>"><b><?php _e( 'Subitle', 'maskitto-light' ); ?></b></label> 
             </div>
             <div class="widget-td">
-                <input class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" type="text" value="<?php echo esc_attr( $subtitle ); ?>">
+                <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'subtitle' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'subtitle' ) ); ?>" type="text" value="<?php echo esc_attr( $subtitle ); ?>">
+                <p><?php _e( 'This field is optional', 'maskitto-light' ); ?></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="widget-option">
+            <div class="widget-th">
+                <label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><b><?php _e( 'Limit items', 'maskitto-light' ); ?></b></label> 
+            </div>
+            <div class="widget-td">
+                <select id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>">
+                    <option><?php _e( 'Select limit', 'maskitto-light' ); ?></option>
+                    <option value="3" <?php selected( $limit, 3 ); ?>><?php _e( '3 items', 'maskitto-light' ); ?></option>
+                    <option value="6" <?php selected( $limit, 6 ); ?>><?php _e( '6 items', 'maskitto-light' ); ?></option>
+                    <option value="9" <?php selected( $limit, 9 ); ?>><?php _e( '9 items', 'maskitto-light' ); ?></option>
+                </select>
                 <p><?php _e( 'This field is optional', 'maskitto-light' ); ?></p>
             </div>
             <div class="clearfix"></div>
@@ -103,6 +132,7 @@ class Maskitto_Blog extends WP_Widget {
         $instance = array();
         $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? esc_attr( $new_instance['title'] ) : '';
         $instance['subtitle'] = ( ! empty( $new_instance['subtitle'] ) ) ? esc_attr( $new_instance['subtitle'] ) : '';
+        $instance['limit'] = ( ! empty( $new_instance['limit'] ) ) ? intval( $new_instance['limit'] ) : '';
 
         return $instance;
     }

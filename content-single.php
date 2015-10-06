@@ -124,7 +124,7 @@ $gallery = get_post_meta( get_the_ID(), 'wpcf-image');
             <div class="row">
                 <div class="col-md-6 col-sm-6 blog-details" style="padding-left: 0;">
                     <span style="padding-right: 6px;"><?php echo get_the_date(); ?></span>
-                    <span>By <?php echo get_the_author(); ?></span>
+                    <span class="post-author-name"><?php _e( 'By', 'maskitto-light' ); ?> <?php echo get_the_author(); ?></span>
                 </div>
                 <div class="col-md-6 col-sm-6 text-right blog-comments-count-single" style="padding-right: 0;">
                     <a href="<?php comments_link(); ?>"><i class="fa fa-comment-o" style="padding-right: 5px;"></i><?php echo $comments_count; ?></a>

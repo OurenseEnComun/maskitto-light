@@ -1,15 +1,15 @@
 <?php
-/* Adds Maskitto_Services widget. */
-class Maskitto_Services extends WP_Widget {
+/* Adds Testimonials widget. */
+class Maskitto_Testimonials extends WP_Widget {
 
     /* Register widget with WordPress. */
     function __construct() {
         parent::__construct(
             'maskitto_services',
-            __('Maskitto: Services', 'maskitto-light'),
+            __('Maskitto: Testimonials', 'maskitto-light'),
             array(
                 'description' => __( 'Only for page builder.', 'maskitto-light' ),
-                'panels_icon' => 'dashicons dashicons-clipboard',
+                'panels_icon' => 'dashicons dashicons-businessman',
                 'panels_groups' => 'theme-widgets'
             )
         );
@@ -19,21 +19,21 @@ class Maskitto_Services extends WP_Widget {
     /* Front-end display of widget. */
     public function widget( $args, $instance ) {
 
+        $testimonials = wp_count_posts( 'testimonials' );
         $title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
         $subtitle = isset( $instance['subtitle'] ) ? esc_attr( $instance['subtitle'] ) : '';
-        $sliders = wp_count_posts( 'services' );
         $remove_border = isset( $instance['remove_border'] ) ? intval( $instance['remove_border'] ) : '';
         $limit = isset( $instance['limit'] ) ? intval( $instance['limit'] ) : '';
         $widget_group = ( isset( $instance['widget_group'] ) ) ? esc_attr( $instance['widget_group'] ) : '';
 
-        if( isset( $sliders->publish ) && $sliders->publish > 0){
+        if( isset( $testimonials->publish ) && $testimonials->publish > 0){
             if( !isset($instance['limit']) || !$instance['limit']) :
                 $limit = 3;
             endif;
     ?>
 
     <?php echo $args['before_widget']; ?>
-        <div class="page-section page-section-services">
+        <div class="page-section page-section-testimoninals">
             <div class="container">
 
                 <?php if( $title || $subtitle ) : ?>
@@ -44,25 +44,23 @@ class Maskitto_Services extends WP_Widget {
                     <?php if( $subtitle ) : ?>
                         <div class="subtitle"><p><?php echo $subtitle; ?></p></div>
                     <?php endif; ?>
-                    <?php if( $instance['title'] || $instance['subtitle'] ){ ?>
-                        <div class="section-title-line"></div>
-                    <?php } ?>
+                    <div class="section-title-line"></div>
                 </div>
                 <?php endif; ?>
 
-                <div class="row services-list <?php if( $remove_border ) { echo 'services-list-no-border'; } ?>">
+                <div class="testimonials-list">
                     <?php
                         $i = 1;
 
                         $loop_array = array(
-                            'post_type' => 'services',
+                            'post_type' => 'testimonials',
                             'posts_per_page' => $limit,
                         );
                         if( isset( $widget_group ) && $widget_group != '' ) :  
                             $loop_array2 = array(
                                 'tax_query' => array(
                                     array(
-                                        'taxonomy' => 'services-group',
+                                        'taxonomy' => 'testimonials-group',
                                         'field'    => 'slug',
                                         'terms'    =>  $widget_group,
                                     ),
@@ -73,50 +71,23 @@ class Maskitto_Services extends WP_Widget {
 
                         $loop = new WP_Query( $loop_array );
                         while ( $loop->have_posts() ) : $loop->the_post();
-                        $url = esc_url( get_post_meta( get_the_ID(), 'wpcf-url', true ));
+
+                            $quote = esc_attr( get_post_meta( get_the_ID(), 'wpcf-quote', true ));
+                            $author_descr = esc_attr( get_post_meta( get_the_ID(), 'wpcf-author-description', true ));
+                            $image = esc_url( get_post_meta( get_the_ID(), 'wpcf-quote-image', true ));
                     ?>
-                        <div class="col-md-4 text-center service-item">
 
-                            <?php if( $url ) { ?>
-                                <a href="<?php echo $url; ?>" class="grey">
-                            <?php } ?>
-
-                                <div class="service-column-left">
-                                    <div class="service-line"></div>
-                                    <div class="service-icon">
-                                        <i class="fa <?php
-                                            $icon = get_post_meta( get_the_ID(), 'wpcf-icon', true );
-                                            if( $icon ){
-                                                echo $icon;
-                                            } else {
-                                                echo 'fa-pencil';
-                                            }
-                                        ?>"></i>
-                                    </div>
-                                    <div class="service-line-bottom"></div>
-                                </div>
-                                <div class="service-column-right">
-                                    <h5><?php the_title(); ?><?php echo maskitto_light_admin_edit(get_the_ID()); ?></h5>
-                                    <?php the_content(); ?>
-                                    <?php if( $url ) : ?>
-                                        <a href="<?php echo $url; ?>" class="services-readmore"><?php _e( 'Read more', 'maskitto-light' ); ?></a>
-                                    <?php endif; ?>
-                                </div>
-
-                            <?php if( $url ) { ?>
-                                </a>
-                            <?php } ?>
-
+                        <div class="testimonials-item">
+                            <div class="testimonials-image" style="background-image: url(<?php echo $image; ?>);"></div>
+                            <div class="text-center"><?php echo maskitto_light_admin_edit(get_the_ID()); ?></div>
+                            <div class="testimonials-text"><i><?php echo $quote; ?></i></div>
+                            <div class="testimonials-author"><?php the_title(); ?><?php if(get_the_title() && $author_descr) echo ' / '; ?><?php echo $author_descr; ?></div>
+                            <div class="testimonials-icon"><i class="fa fa-quote-right"></i></div>
                         </div>
-
-
-                        <?php if( $i%3 == 0 && $loop->current_post + 1 != $loop->post_count ) : ?>
-                            </div>
-                            <div class="row services-list">
-                        <?php endif; $i++; ?>
 
                     <?php endwhile; ?>
                 </div>
+
             </div>
         </div>
     <?php echo $args['after_widget']; ?>
@@ -148,10 +119,6 @@ class Maskitto_Services extends WP_Widget {
             $limit = $instance[ 'limit' ];
         }
 
-        if ( isset( $instance[ 'remove_border' ] ) ) {
-            $remove_border = $instance[ 'remove_border' ];
-        }
-
         if ( isset( $instance[ 'widget_group' ] ) ) {
             $widget_group = $instance[ 'widget_group' ];
         }
@@ -163,9 +130,9 @@ class Maskitto_Services extends WP_Widget {
             </div>
             <div class="widget-td">
 
-                <?php if ( post_type_exists( 'services' ) ) : ?>
-                    <a href="<?php echo admin_url( 'edit.php?post_type=services' ); ?>" target="_blank" class="widget-edit-button">
-                        <?php _e( 'Manage services content', 'maskitto-light' ); ?> 
+                <?php if ( post_type_exists( 'testimonials' ) ) : ?>
+                    <a href="<?php echo admin_url( 'edit.php?post_type=testimonials' ); ?>" target="_blank" class="widget-edit-button">
+                        <?php _e( 'Manage testimonials content', 'maskitto-light' ); ?> 
                     </a>
                 <?php else : ?>
                     <p><?php _e( 'Please import <i>Types</i> plugin XML file from our documentation to access this option.', 'maskitto-light' ); ?></p>
@@ -199,16 +166,6 @@ class Maskitto_Services extends WP_Widget {
 
         <div class="widget-option">
             <div class="widget-th">
-                <label for="<?php echo $this->get_field_id( 'remove_border' ); ?>"><b><?php _e( 'Dotted line', 'maskitto-light' ); ?></b></label> 
-            </div>
-            <div class="widget-td">
-                <input type="checkbox" name="<?php echo $this->get_field_name( 'remove_border' ); ?>" value="1" <?php if( $remove_border ){ echo 'checked'; } ?>><?php _e( 'disable the top dotted lines', 'maskitto-light' ); ?>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-
-        <div class="widget-option">
-            <div class="widget-th">
                 <label for="<?php echo $this->get_field_id( 'limit' ); ?>"><b><?php _e( 'Limit items', 'maskitto-light' ); ?></b></label> 
             </div>
             <div class="widget-td">
@@ -230,7 +187,7 @@ class Maskitto_Services extends WP_Widget {
                 <select id="<?php echo $this->get_field_id( 'widget_group' ); ?>" name="<?php echo $this->get_field_name( 'widget_group' ); ?>"> 
                     
                     <option value=""><?php _e( 'Show all', 'maskitto-light' ); ?></option>
-                    <?php foreach( get_terms( 'services-group', array( 'hide_empty' => 0 ) ) as $item ) : ?>
+                    <?php foreach( get_terms( 'testimonials-group', array( 'hide_empty' => 0 ) ) as $item ) : ?>
                         <option value="<?php echo $item->slug; ?>" <?php if( $widget_group == $item->slug ) echo 'selected'; ?>>
                             <?php echo $item->name; ?>
                         </option>

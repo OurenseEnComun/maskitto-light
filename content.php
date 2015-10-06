@@ -71,7 +71,7 @@ endif;
         $media = maskitto_light_get_media( get_the_ID() );
     ?>
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class( 'col-md-4 blog-item blog-layout-2' ); ?>>
+    <article id="post-<?php the_ID(); ?>" <?php post_class( 'col-md-4 blog-item blog-layout-2' ); ?> <?php if( isset( $maskitto_light['blog-widgets'] ) && $maskitto_light['blog-widgets'] == 0 ) : ?> style="width: 33.3%;"<?php endif; ?>>
         <div class="blog-item-container">
 
             <?php if ( has_post_thumbnail() ) : ?>

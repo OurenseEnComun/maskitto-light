@@ -123,7 +123,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
 
          * */
         function change_arguments($args) {
-            //$args['dev_mode'] = true;
+            $args['dev_mode'] = false;
 
             return $args;
         }
@@ -244,7 +244,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'id'       => 'page-layout',
                         'type'     => 'radio',
                         'title'    => __('Page Layout', 'maskitto-light'), 
-                        'subtitle' => __('Choose page layout type', 'maskitt-light'),
+                        'subtitle' => __('Choose page layout type', 'maskitto-light'),
                         'options'  => array(
                             '1' => 'Standard', 
                             '2' => 'Boxed', 
@@ -279,6 +279,19 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                     ),
 
                     array(
+                        'id'       => 'loading-animation',
+                        'type'     => 'radio',
+                        'title'     => __('Loading screen with animation', 'maskitto-light'),
+                        'subtitle'  => __('Enable or disable option to to show loading screen', 'maskitto-light'),
+                        'options'  => array(
+                            '0' => 'Off', 
+                            '1' => 'In every page', 
+                            '2' => 'Only once', 
+                        ),
+                        'default' => '0'
+                    ),
+
+                    array(
                         'id'        => 'back-to-top',
                         'type'      => 'switch',
                         'title'     => __('Back To Top', 'maskitto-light'),
@@ -288,7 +301,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
 
                     array(
                         'id'        => 'footer-text',
-                        'type'      => 'editor',
+                        'type'      => 'textarea',
                         'title'     => __('Footer Text', 'maskitto-light'),
                         'subtitle'  => __('Add additional information in footer', 'maskitto-light'),
                         'default'   => '',
@@ -331,6 +344,16 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                     ),
 
                     array(
+                        'id'        => 'primary-color-hover',
+                        'type'      => 'color',
+                        'title'     => __('Accent Hover Color', 'maskitto-light'),
+                        'subtitle'  => __('Define main accent hover color for links', 'maskitto-light'),
+                        'default'   => '#cf3d3d',
+                        'validate'  => 'color',
+                        'transparent' => false
+                    ),
+
+                    array(
                         'id'        => 'body-background-color',
                         'type'      => 'color',
                         'title'     => __('Body Background Color', 'maskitto-light'),
@@ -343,7 +366,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                     array(
                         'id'        => 'header-background-color',
                         'type'      => 'color',
-                        'title'     => __('Header Background color', 'maskitto-light'),
+                        'title'     => __('Header Background color (bottom bar)', 'maskitto-light'),
                         'subtitle'  => __('Change header background color', 'maskitto-light'),
                         'default'   => '#ffffff',
                         'validate'  => 'color',
@@ -396,6 +419,42 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'font-weight' => false,
                     ),
 
+                    array(
+                        'id'       => 'button-style',
+                        'type'     => 'radio',
+                        'title'    => __('Button Style', 'maskitto-light'), 
+                        'subtitle' => __('Choose global button style', 'maskitto-light'),
+                        'options'  => array(
+                            '1' => 'Style 1', 
+                            '2' => 'Style 2 (new)', 
+                        ),
+                        'default' => '1'
+                    ),
+
+                    array(
+                        'id'       => 'title-style',
+                        'type'     => 'radio',
+                        'title'    => __('Title Style', 'maskitto-light'), 
+                        'subtitle' => __('Choose global title style', 'maskitto-light'),
+                        'options'  => array(
+                            '1' => 'Style 1', 
+                            '2' => 'Style 2 (new)', 
+                        ),
+                        'default' => '1'
+                    ),
+
+                    array(
+                        'id'       => 'slideshow-widget-style',
+                        'type'     => 'radio',
+                        'title'    => __('Slideshow Widget Style', 'maskitto-light'), 
+                        'subtitle' => __('Choose global slideshow widget style', 'maskitto-light'),
+                        'options'  => array(
+                            '1' => 'Style 1', 
+                            '2' => 'Style 2 (new)', 
+                        ),
+                        'default' => '1'
+                    ),
+
                 )
             );
 
@@ -406,10 +465,19 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                 'fields'    => array(
 
                     array(
+                        'id'        => 'header-top-accent',
+                        'type'      => 'switch',
+                        'title'     => __('Social bar accent background', 'maskitto-light'),
+                        'subtitle'  => __('Enable or disable accent background color for social bar', 'maskitto-light'),
+                        'default'   => false,
+                    ),
+
+
+                    array(
                         'id'       => 'header-layout',
                         'type'     => 'radio',
                         'title'    => __('Header Layout', 'maskitto-light'), 
-                        'subtitle' => __('Choose header layout type', 'maskitt-light'),
+                        'subtitle' => __('Choose header layout type', 'maskitto-light'),
                         'options'  => array(
                             '1' => 'Standard ', 
                             '5' => 'Standard Large', 
@@ -424,10 +492,10 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'id'       => 'nacigation-dropdown',
                         'type'     => 'radio',
                         'title'    => __('Navigation Dropdown', 'maskitto-light'), 
-                        'subtitle' => __('Choose navigation dropdown action', 'maskitt-light'),
+                        'subtitle' => __('Choose navigation dropdown action', 'maskitto-light'),
                         'options'  => array(
-                            '1' => 'On hover', 
-                            '2' => 'On click (without parent URL)', 
+                            '1' => 'On hover - supports 3 navigation levels', 
+                            '2' => 'On click (without parent URL) - supports 2 navigation levels', 
                         ),
                         'default' => '1'
                     ),
@@ -447,7 +515,6 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'subtitle'  => __('Enable or disable contact information in header', 'maskitto-light'),
                         'default'   => true,
                     ),
-
 
                     array(
                         'id'        => 'header-contacts-mail',
@@ -509,7 +576,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'default'   => 'http://www.twitter.com/TheShufflehound',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -521,7 +588,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -533,19 +600,19 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
                     array(
                         'id'        => 'social-network-youtube',
                         'type'      => 'text',
-                        'title'     => __('Yotube', 'maskitto-light'),
-                        'subtitle'  => __('Your Yotube URL', 'maskitto-light'),
+                        'title'     => __('Youtube', 'maskitto-light'),
+                        'subtitle'  => __('Your Youtube URL', 'maskitto-light'),
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -557,7 +624,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -569,7 +636,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -581,7 +648,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -593,7 +660,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -605,7 +672,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -618,7 +685,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'default'   => 'https://wordpress.org/themes/maskitto-light',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -630,7 +697,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
@@ -642,10 +709,33 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'validate'  => 'url',
                         'text_hint' => array(
                             'title'     => '',
-                            'content'   => 'Please enter a valid <strong>URL</strong> in this field.'
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
                         )
                     ),
 
+                    array(
+                        'id'        => 'social-network-behance',
+                        'type'      => 'text',
+                        'title'     => __('Behance', 'maskitto-light'),
+                        'subtitle'  => __('Your Behance profile URL', 'maskitto-light'),
+                        'validate'  => 'url',
+                        'text_hint' => array(
+                            'title'     => '',
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
+                        )
+                    ),
+
+                    array(
+                        'id'        => 'social-network-tumblr',
+                        'type'      => 'text',
+                        'title'     => __('Tumblr', 'maskitto-light'),
+                        'subtitle'  => __('Your Tumblr profile URL', 'maskitto-light'),
+                        'validate'  => 'url',
+                        'text_hint' => array(
+                            'title'     => '',
+                            'content'   => __('Please enter a valid URL in this field.', 'maskitto-light')
+                        )
+                    ),
 
                 )
             );
@@ -655,6 +745,14 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                 'icon'      => 'el-icon-file-edit',
                 'title'     => __('Blog', 'maskitto-light'),
                 'fields'    => array(
+
+                    array(
+                        'id'        => 'blog-widgets',
+                        'type'      => 'switch',
+                        'title'     => __('Show Widgets', 'maskitto-light'),
+                        'subtitle'  => __('Enable or disable blog page widgets in the right side', 'maskitto-light'),
+                        'default'   => true,
+                    ),
 
                     array(
                         'id'        => 'blog-categories',
@@ -668,7 +766,7 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'id'       => 'blog-layout',
                         'type'     => 'radio',
                         'title'    => __('Blog Style', 'maskitto-light'), 
-                        'subtitle' => __('Choose blog style (includes blog and post page)', 'maskitt-light'),
+                        'subtitle' => __('Choose blog style (includes blog and post page)', 'maskitto-light'),
                         'options'  => array(
                             '1' => 'Standard', 
                             '2' => 'Old', 
@@ -719,6 +817,23 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
 
 
             $this->sections[] = array(
+                'icon'      => 'el-icon-envelope',
+                'title'     => __('Contacts', 'maskitto-light'),
+                'fields'    => array(
+
+                    array(
+                        'id'        => 'contacts-social-icons',
+                        'type'      => 'switch',
+                        'title'     => __('Contact Social Icons', 'maskitto-light'),
+                        'subtitle'  => __('Enable or disable option to show social icons', 'maskitto-light'),
+                        'default'   => true,
+                    ),
+
+                )
+            );
+
+
+            $this->sections[] = array(
                 'icon'      => 'el-icon-puzzle',
                 'title'     => __('Other', 'maskitto-light'),
                 'fields'    => array(
@@ -729,6 +844,18 @@ if (!class_exists('maskitto_light_Redux_Framework_config')) {
                         'url'       =>  true,
                         'title'     => __('Admin Login Page Logo', 'maskitto-light'),
                         'subtitle'  => __('Upload logo', 'maskitto-light'),
+                    ),
+
+                    array(
+                        'id'        => 'preview-word-limit',
+                        'type'      => 'slider',
+                        'title'     => __('Preview word limit', 'maskitto-light'),
+                        'subtitle'  => __('Limit preview words length in blog page or others', 'maskitto-light'),
+                        "default"   => 55,
+                        "min"       => 10,
+                        "step"      => 1,
+                        "max"       => 70,
+                        'display_value' => 'label'
                     ),
 
                 )
@@ -892,3 +1019,5 @@ if (!function_exists('maskitto_light_validate_callback_function')):
         return $return;
     }
 endif;
+
+?>
