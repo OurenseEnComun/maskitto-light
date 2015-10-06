@@ -631,6 +631,10 @@ nav.navbar-default {
 
 }
 
+.navbar-nav .dropdown .dropdown-menu .dropdown-menu2 {
+        width: 292px;
+}
+
 
 .navbar-nav .dropdown .dropdown-menu li .dropdown-menu {
 	left: 100%!important;
@@ -656,6 +660,7 @@ nav.navbar-default {
 }
 
 .navbar-nav .dropdown .dropdown-menu .active a {
+        background-color: #662739!important;
 	color: #fff!important;
 	font-weight: bold;
 }
