@@ -637,6 +637,7 @@ nav.navbar-default {
 
 
 .navbar-nav .dropdown .dropdown-menu li .dropdown-menu {
+        width: 292px;
 	left: 100%!important;
 	float: right!important;
 	right: 0!important;
